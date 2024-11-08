@@ -1,4 +1,12 @@
 ### UPGRADE FROM 1.5.1 to 1.6
+### UPGRADE FROM 1.6 to 1.7
+
+1. Support for Sylius 1.14 has been added, it is now the recommended Sylius version to use.
+
+1. Support for Sylius 1.12 has been dropped, upgrade your application to [Sylius 1.13](https://github.com/Sylius/Sylius/blob/1.13/UPGRADE-1.13.md).
+   or [Sylius 1.14](https://github.com/Sylius/Sylius/blob/1.14/UPGRADE-1.14.md).
+
+### UPGRADE FROM 1.5.1 to 1.6.0
 
 1. Support for Sylius 1.13 has been added, it is now the recommended Sylius version to use.
 
