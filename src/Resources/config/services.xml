@@ -166,7 +166,7 @@
 
         <service
             id="Sylius\PayPalPlugin\Resolver\PayPalDefaultPaymentMethodResolver"
-            decorates="sylius.resolver.payment_method.default"
+            decorates="sylius.payment_method_resolver.default"
         >
             <argument type="service" id=".inner" />
             <argument type="service" id="sylius.repository.payment_method" />
@@ -174,7 +174,7 @@
 
         <service
             id="Sylius\PayPalPlugin\Resolver\PayPalPrioritisingPaymentMethodsResolver"
-            decorates="sylius.resolver.payment_methods"
+            decorates="sylius.payment_methods_resolver"
         >
             <argument type="service" id=".inner" />
             <argument>%sylius.paypal.prioritized_factory_name%</argument>
