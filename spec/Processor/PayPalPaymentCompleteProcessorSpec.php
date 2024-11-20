@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace spec\Sylius\PayPalPlugin\Processor;
 
 use Payum\Core\GatewayInterface;
-use Payum\Core\Model\GatewayConfigInterface;
 use Payum\Core\Payum;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Payum\Request\CompleteOrder;
 use Sylius\PayPalPlugin\Processor\PaymentCompleteProcessorInterface;
 use Sylius\PayPalPlugin\Resolver\CompleteOrderPaymentResolverInterface;

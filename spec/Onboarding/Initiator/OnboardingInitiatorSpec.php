@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\Onboarding\Initiator;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\AdminUserInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Onboarding\Initiator\OnboardingInitiatorInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Security;
 
 final class OnboardingInitiatorSpec extends ObjectBehavior
 {

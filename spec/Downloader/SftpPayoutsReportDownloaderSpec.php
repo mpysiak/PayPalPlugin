@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\Downloader;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use phpseclib3\Net\SFTP;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Downloader\PayoutsReportDownloaderInterface;
 use Sylius\PayPalPlugin\Exception\PayPalReportDownloadException;
 use Sylius\PayPalPlugin\Model\Report;
