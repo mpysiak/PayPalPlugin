@@ -26,8 +26,8 @@ final class OnboardingInitiator implements OnboardingInitiatorInterface
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly Security $security,
-        string $facilitatorUrl
-    ){
+        string $facilitatorUrl,
+    ) {
         $this->createPartnerReferralsUrl = $facilitatorUrl . '/partner-referrals/create';
     }
 

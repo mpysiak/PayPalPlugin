@@ -15,7 +15,6 @@ namespace Sylius\PayPalPlugin\Controller;
 
 use Doctrine\Persistence\ObjectManager;
 use Sylius\Abstraction\StateMachine\StateMachineInterface;
-use Sylius\Abstraction\StateMachine\WinzouStateMachineAdapter;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Order\Processor\OrderProcessorInterface;
 use Sylius\Component\Payment\PaymentTransitions;
@@ -61,5 +60,4 @@ final readonly class CancelPayPalPaymentAction
 
         return new Response('', Response::HTTP_NO_CONTENT);
     }
-
 }

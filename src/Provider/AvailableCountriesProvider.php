@@ -22,7 +22,7 @@ class AvailableCountriesProvider implements AvailableCountriesProviderInterface
 {
     public function __construct(
         private readonly RepositoryInterface $countryRepository,
-        private readonly ChannelContextInterface $channelContext
+        private readonly ChannelContextInterface $channelContext,
     ) {
     }
 
