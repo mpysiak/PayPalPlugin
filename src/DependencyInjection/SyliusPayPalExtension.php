@@ -74,7 +74,7 @@ final class SyliusPayPalExtension extends Extension implements PrependExtensionI
             'migrations_paths' => \array_merge(
                 $migrationsPath,
                 [
-                    'Sylius\PayPalPlugin\Migrations' => '@SyliusPayPalPlugin/Migrations',
+                    'Sylius\PayPalPlugin\Migrations' => '@SyliusPayPalPlugin/src/Migrations',
                 ],
             ),
         ]);

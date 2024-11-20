@@ -20,7 +20,6 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
     .enableSassLoader()
-    .enableStimulusBridge(path.resolve(__dirname, '../../src/Resources/assets/shop/controllers.json'))
 ;
 
 const appShopConfig = Encore.getWebpackConfig();
