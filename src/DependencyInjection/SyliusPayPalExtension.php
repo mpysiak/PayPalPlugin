@@ -29,8 +29,8 @@ final class SyliusPayPalExtension extends Extension implements PrependExtensionI
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $loaderResolver = new LoaderResolver([
-            new PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config')),
-            new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config')),
+            new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config')),
+            new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../config')),
         ]);
         $delegatingLoader = new DelegatingLoader($loaderResolver);
 

@@ -19,13 +19,10 @@ use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Repository\PaymentMethodRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-final class PayPalConfigurationProvider implements PayPalConfigurationProviderInterface
+final readonly class PayPalConfigurationProvider implements PayPalConfigurationProviderInterface
 {
-    private PaymentMethodRepositoryInterface $paymentMethodRepository;
-
-    public function __construct(PaymentMethodRepositoryInterface $paymentMethodRepository)
+    public function __construct(private PaymentMethodRepositoryInterface $paymentMethodRepository)
     {
-        $this->paymentMethodRepository = $paymentMethodRepository;
     }
 
     public function getClientId(ChannelInterface $channel): string

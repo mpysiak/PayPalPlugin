@@ -26,56 +26,30 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-final class PayPalButtonsController
+final readonly class PayPalButtonsController
 {
-    private Environment $twig;
-
-    private UrlGeneratorInterface $router;
-
-    private ChannelContextInterface $channelContext;
-
-    private LocaleContextInterface $localeContext;
-
-    private PayPalConfigurationProviderInterface $payPalConfigurationProvider;
-
-    private OrderRepositoryInterface $orderRepository;
-
-    private AvailableCountriesProviderInterface $availableCountriesProvider;
-
-    private LocaleProcessorInterface $localeProcessor;
-
     public function __construct(
-        Environment $twig,
-        UrlGeneratorInterface $router,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext,
-        PayPalConfigurationProviderInterface $payPalConfigurationProvider,
-        OrderRepositoryInterface $orderRepository,
-        AvailableCountriesProviderInterface $availableCountriesProvider,
-        LocaleProcessorInterface $localeProcessor,
+        private Environment $twig,
+        private UrlGeneratorInterface $router,
+        private ChannelContextInterface $channelContext,
+        private LocaleContextInterface $localeContext,
+        private PayPalConfigurationProviderInterface $payPalConfigurationProvider,
+        private OrderRepositoryInterface $orderRepository,
+        private AvailableCountriesProviderInterface $availableCountriesProvider,
+        private LocaleProcessorInterface $localeProcessor,
     ) {
-        $this->twig = $twig;
-        $this->router = $router;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
-        $this->payPalConfigurationProvider = $payPalConfigurationProvider;
-        $this->orderRepository = $orderRepository;
-        $this->availableCountriesProvider = $availableCountriesProvider;
-        $this->localeProcessor = $localeProcessor;
     }
 
     public function renderProductPageButtonsAction(Request $request): Response
     {
-        $productId = $request->attributes->getInt('productId');
         /** @var ChannelInterface $channel */
         $channel = $this->channelContext->getChannel();
 
         try {
-            return new Response($this->twig->render('@SyliusPayPalPlugin/payFromProductPage.html.twig', [
+            return new Response($this->twig->render('@SyliusPayPalPlugin/pay_from_product_page.html.twig', [
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'completeUrl' => $this->router->generate('sylius_shop_checkout_complete'),
-                'createPayPalOrderFromProductUrl' => $this->router->generate('sylius_paypal_plugin_create_paypal_order_from_product', ['productId' => $productId]),
                 'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_payment_error'),
                 'locale' => $this->localeProcessor->process($this->localeContext->getLocaleCode()),
                 'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_plugin_process_paypal_order'),
@@ -94,7 +68,7 @@ final class PayPalButtonsController
         $order = $this->orderRepository->find($orderId);
 
         try {
-            return new Response($this->twig->render('@SyliusPayPalPlugin/payFromCartPage.html.twig', [
+            return new Response($this->twig->render('@SyliusPayPalPlugin/pay_from_cart_page.html.twig', [
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'completeUrl' => $this->router->generate('sylius_shop_checkout_complete'),
@@ -120,7 +94,7 @@ final class PayPalButtonsController
         $order = $this->orderRepository->find($orderId);
 
         try {
-            return new Response($this->twig->render('@SyliusPayPalPlugin/payFromPaymentPage.html.twig', [
+            return new Response($this->twig->render('@SyliusPayPalPlugin/pay_from_payment_page.html.twig', [
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'cancelPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_cancel_payment'),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),

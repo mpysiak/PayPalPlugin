@@ -23,18 +23,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
-final class EnableSellerAction
+final readonly class EnableSellerAction
 {
-    private PaymentMethodRepositoryInterface $paymentMethodRepository;
-
-    private PaymentMethodEnablerInterface $paymentMethodEnabler;
-
     public function __construct(
-        PaymentMethodRepositoryInterface $paymentMethodRepository,
-        PaymentMethodEnablerInterface $paymentMethodEnabler,
+        private PaymentMethodRepositoryInterface $paymentMethodRepository,
+        private PaymentMethodEnablerInterface $paymentMethodEnabler,
     ) {
-        $this->paymentMethodRepository = $paymentMethodRepository;
-        $this->paymentMethodEnabler = $paymentMethodEnabler;
     }
 
     public function __invoke(Request $request): Response

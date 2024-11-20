@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace Sylius\PayPalPlugin\Processor;
 
-use SM\Factory\FactoryInterface;
 use Sylius\Abstraction\StateMachine\StateMachineInterface;
-use Sylius\Abstraction\StateMachine\WinzouStateMachineAdapter;
 use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
@@ -24,23 +22,12 @@ use Sylius\Component\Order\Processor\OrderProcessorInterface;
 use Sylius\Component\Payment\PaymentTransitions;
 use Webmozart\Assert\Assert;
 
-final class OrderPaymentProcessor implements OrderProcessorInterface
+final readonly class OrderPaymentProcessor implements OrderProcessorInterface
 {
     public function __construct(
-        private readonly OrderProcessorInterface $baseOrderPaymentProcessor,
-        private readonly FactoryInterface|StateMachineInterface $stateMachineFactory,
+        private OrderProcessorInterface $baseOrderPaymentProcessor,
+        private StateMachineInterface $stateMachineFactory,
     ) {
-        if ($this->stateMachineFactory instanceof FactoryInterface) {
-            trigger_deprecation(
-                'sylius/paypal-plugin',
-                '1.6',
-                sprintf(
-                    'Passing an instance of "%s" as the second argument is deprecated and will be prohibited in 2.0. Use "%s" instead.',
-                    FactoryInterface::class,
-                    StateMachineInterface::class,
-                ),
-            );
-        }
     }
 
     public function process(OrderInterface $order): void
@@ -61,7 +48,7 @@ final class OrderPaymentProcessor implements OrderProcessorInterface
             $payment !== null &&
             $this->getFactoryName($payment) !== 'sylius.pay_pal'
         ) {
-            $this->getStateMachine()->apply($payment, PaymentTransitions::GRAPH, PaymentTransitions::TRANSITION_CANCEL);
+            $this->stateMachineFactory->apply($payment, PaymentTransitions::GRAPH, PaymentTransitions::TRANSITION_CANCEL);
         }
 
         $this->baseOrderPaymentProcessor->process($order);
@@ -75,14 +62,5 @@ final class OrderPaymentProcessor implements OrderProcessorInterface
         $gatewayConfig = $paymentMethod->getGatewayConfig();
 
         return $gatewayConfig->getFactoryName();
-    }
-
-    private function getStateMachine(): StateMachineInterface
-    {
-        if ($this->stateMachineFactory instanceof FactoryInterface) {
-            return new WinzouStateMachineAdapter($this->stateMachineFactory);
-        }
-
-        return $this->stateMachineFactory;
     }
 }

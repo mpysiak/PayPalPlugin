@@ -1,0 +1,12 @@
+{% if data.gatewayConfig.factoryName == 'sylius.pay_pal'
+    and data.gatewayConfig.config.reports_sftp_username
+    and data.gatewayConfig.config.reports_sftp_password
+%}
+    {% set path = options.link.url|default(path(options.link.route, options.link.parameters|default({}))) %}
+    <a href="{{ path }}" class="btn btn-icon" data-bs-toggle="tooltip" data-bs-title="{{ action.label|trans }}">
+        {{ ux_icon(action.icon) }}
+    </a>
+{% endif %}
+
+
+

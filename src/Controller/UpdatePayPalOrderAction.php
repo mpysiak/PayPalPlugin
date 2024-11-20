@@ -20,52 +20,21 @@ use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Order\Processor\OrderProcessorInterface;
 use Sylius\PayPalPlugin\Api\CacheAuthorizeClientApiInterface;
-use Sylius\PayPalPlugin\Api\OrderDetailsApiInterface;
 use Sylius\PayPalPlugin\Api\UpdateOrderApiInterface;
 use Sylius\PayPalPlugin\Provider\PaymentProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class UpdatePayPalOrderAction
+final readonly class UpdatePayPalOrderAction
 {
-    private PaymentProviderInterface $paymentProvider;
-
-    private CacheAuthorizeClientApiInterface $authorizeClientApi;
-
-    private ?OrderDetailsApiInterface $orderDetailsApi;
-
-    private UpdateOrderApiInterface $updateOrderApi;
-
-    private AddressFactoryInterface $addressFactory;
-
-    private OrderProcessorInterface $orderProcessor;
-
     public function __construct(
-        PaymentProviderInterface $paymentProvider,
-        CacheAuthorizeClientApiInterface $authorizeClientApi,
-        ?OrderDetailsApiInterface $orderDetailsApi,
-        UpdateOrderApiInterface $updateOrderApi,
-        AddressFactoryInterface $addressFactory,
-        OrderProcessorInterface $orderProcessor,
+        private PaymentProviderInterface $paymentProvider,
+        private CacheAuthorizeClientApiInterface $authorizeClientApi,
+        private UpdateOrderApiInterface $updateOrderApi,
+        private AddressFactoryInterface $addressFactory,
+        private OrderProcessorInterface $orderProcessor,
     ) {
-        $this->paymentProvider = $paymentProvider;
-        $this->authorizeClientApi = $authorizeClientApi;
-        $this->orderDetailsApi = $orderDetailsApi;
-        $this->updateOrderApi = $updateOrderApi;
-        $this->addressFactory = $addressFactory;
-        $this->orderProcessor = $orderProcessor;
-
-        if (null !== $this->orderDetailsApi) {
-            trigger_deprecation(
-                'sylius/paypal-plugin',
-                '1.7',
-                sprintf(
-                    'Passing an instance of "%s" as the first argument is deprecated and will be prohibited in 2.0',
-                    OrderDetailsApiInterface::class,
-                ),
-            );
-        }
     }
 
     public function __invoke(Request $request): Response
@@ -79,7 +48,7 @@ final class UpdatePayPalOrderAction
         $token = $this->authorizeClientApi->authorize($paymentMethod);
 
         /** @var array $shippingAddress */
-        $shippingAddress = $request->request->get('shipping_address');
+        $shippingAddress = $request->request->all('shipping_address');
 
         /** @var AddressInterface $address */
         $address = $this->addressFactory->createNew();

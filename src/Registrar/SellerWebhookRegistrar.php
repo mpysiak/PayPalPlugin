@@ -23,22 +23,13 @@ use Sylius\PayPalPlugin\Exception\PayPalWebhookAlreadyRegisteredException;
 use Sylius\PayPalPlugin\Exception\PayPalWebhookUrlNotValidException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class SellerWebhookRegistrar implements SellerWebhookRegistrarInterface
+final readonly class SellerWebhookRegistrar implements SellerWebhookRegistrarInterface
 {
-    private AuthorizeClientApiInterface $authorizeClientApi;
-
-    private UrlGeneratorInterface $urlGenerator;
-
-    private WebhookApiInterface $webhookApi;
-
     public function __construct(
-        AuthorizeClientApiInterface $authorizeClientApi,
-        UrlGeneratorInterface $urlGenerator,
-        WebhookApiInterface $webhookApi,
+        private AuthorizeClientApiInterface $authorizeClientApi,
+        private UrlGeneratorInterface $urlGenerator,
+        private WebhookApiInterface $webhookApi,
     ) {
-        $this->authorizeClientApi = $authorizeClientApi;
-        $this->urlGenerator = $urlGenerator;
-        $this->webhookApi = $webhookApi;
     }
 
     public function register(PaymentMethodInterface $paymentMethod): void
