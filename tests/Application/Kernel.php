@@ -12,6 +12,7 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use winzou\Bundle\StateMachineBundle\winzouStateMachineBundle;
 
 final class Kernel extends BaseKernel
 {
@@ -37,6 +38,10 @@ final class Kernel extends BaseKernel
             if (isset($envs['all']) || isset($envs[$this->environment])) {
                 yield new $class();
             }
+        }
+
+        if (class_exists(winzouStateMachineBundle::class)) {
+            yield new winzouStateMachineBundle();
         }
     }
 
