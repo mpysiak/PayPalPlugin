@@ -1,6 +1,6 @@
 imports:
     - { resource: "@SyliusPayPalPlugin/config/integrations/winzou_state_machine/config.php" }
-    - { resource: 'app/twig_hooks/**/*.yaml' }
+    - { resource: '@SyliusPayPalPlugin/config/app/twig_hooks/**/*.yaml' }
 
 sylius_admin:
     twig:
@@ -20,7 +20,7 @@ sylius_grid:
     templates:
         action:
             download_report: "@SyliusPayPalPlugin/admin/payment_method/grid/action/download_report.html.twig"
-            enable_pay_pal: "@SyliusPayPalPlugin/admin/payment_method/grid/action/enable_pay_pal.html.twig"
+            enable_paypal: "@SyliusPayPalPlugin/admin/payment_method/grid/action/enable_paypal.html.twig"
             enable_seller: "@SyliusPayPalPlugin/admin/payment_method/grid/action/enable_seller.html.twig"
     grids:
         sylius_admin_payment_method:
@@ -38,8 +38,8 @@ sylius_grid:
                                 parameters:
                                     id: resource.id
                 main:
-                    enable_pay_pal:
-                        type: enable_pay_pal
+                    enable_paypal:
+                        type: enable_paypal
 
 monolog:
     channels: ['paypal']

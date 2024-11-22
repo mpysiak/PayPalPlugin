@@ -1,6 +1,6 @@
 sylius_twig_hooks:
     hooks:
         'sylius_admin.payment_method.index.content.grid':
-            confirmation-modal-create-pay-pal:
-                template: '@SyliusPayPalPlugin/admin/payment_method/grid/confirmation-modal-create-pay-pal.html.twig'
+            confirmation_modal_create_paypal:
+                template: '@SyliusPayPalPlugin/admin/payment_method/grid/confirmation_modal_create_paypal.html.twig'
                 priority: -100

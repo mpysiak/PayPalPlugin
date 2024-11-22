@@ -69,7 +69,7 @@
             "dev-master": "2.0-dev"
         },
         "symfony": {
-            "require": "^6.4 || ^7.1"
+            "require": "^6.4"
         }
     },
     "scripts": {

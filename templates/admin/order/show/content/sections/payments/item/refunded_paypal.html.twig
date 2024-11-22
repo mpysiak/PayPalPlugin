@@ -1,7 +1,7 @@
 {% set payment = hookable_metadata.context.payment %}
 
 {% if
-    payment.method.gatewayConfig.factoryName == 'sylius.pay_pal' and
+    payment.method.gatewayConfig.factoryName|default('') == 'sylius.pay_pal' and
     payment.state == constant('Sylius\\Component\\Core\\Model\\PaymentInterface::STATE_REFUNDED')
 %}
     <td class="py-2">

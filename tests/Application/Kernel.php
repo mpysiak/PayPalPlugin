@@ -39,10 +39,6 @@ final class Kernel extends BaseKernel
                 yield new $class();
             }
         }
-
-        if (class_exists(winzouStateMachineBundle::class)) {
-            yield new winzouStateMachineBundle();
-        }
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
