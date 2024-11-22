@@ -21,11 +21,6 @@ use Sylius\PayPalPlugin\Provider\AvailableCountriesProviderInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-/**
- * @experimental
- * This part is used to wire payment method handlers with Api Platform based on (https://github.com/Sylius/Sylius/pull/12107)
- * For now its dead code for itself, once we tag new Sylius version with new changes this code will be used.
- */
 final class PayPalPayment
 {
     private RouterInterface $router;

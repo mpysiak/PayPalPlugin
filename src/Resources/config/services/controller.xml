@@ -102,7 +102,7 @@
         </service>
 
         <service id="Sylius\PayPalPlugin\Controller\ProcessPayPalOrderAction">
-            <argument type="service" id="sylius.repository.order" />
+            <argument>null</argument>
             <argument type="service" id="sylius.repository.customer" />
             <argument type="service" id="sylius.factory.customer" />
             <argument type="service" id="sylius.factory.address" />
@@ -117,7 +117,7 @@
         <service id="Sylius\PayPalPlugin\Controller\UpdatePayPalOrderAction">
             <argument type="service" id="Sylius\PayPalPlugin\Provider\PaymentProviderInterface" />
             <argument type="service" id="Sylius\PayPalPlugin\Api\CacheAuthorizeClientApiInterface" />
-            <argument type="service" id="Sylius\PayPalPlugin\Api\OrderDetailsApiInterface" />
+            <argument>null</argument>
             <argument type="service" id="Sylius\PayPalPlugin\Api\UpdateOrderApiInterface" />
             <argument type="service" id="sylius.factory.address" />
             <argument type="service" id="sylius.order_processing.order_processor" />
