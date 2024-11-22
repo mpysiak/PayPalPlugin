@@ -8,6 +8,54 @@
 1. The following classes have been deprecated and will be removed in Sylius/PayPalPlugin 2.0:
    - `Sylius\PayPalPlugin\Form\Type\ChangePaymentMethodType`
    - `Sylius\PayPalPlugin\Form\Type\SelectPaymentType`
+   - `Sylius\PayPalPlugin\Controller\PayPalOrderItemController`
+
+1. The following constructor signatures have been changed:
+
+   `Sylius\PayPalPlugin\Controller\ProcessPayPalOrderAction`
+      ```diff
+      public function __construct(
+      -      private OrderRepositoryInterface $orderRepository,
+      +      private ?OrderRepositoryInterface $orderRepository,
+             private CustomerRepositoryInterface $customerRepository,
+             private FactoryInterface $customerFactory,
+             private AddressFactoryInterface $addressFactory,
+             private ObjectManager $orderManager,
+             private StateMachineFactoryInterface|StateMachineInterface $stateMachineFactory,
+             private PaymentStateManagerInterface $paymentStateManager,
+             private CacheAuthorizeClientApiInterface $authorizeClientApi,
+             private OrderDetailsApiInterface $orderDetailsApi,
+             private OrderProviderInterface $orderProvider,
+      )
+      ```
+
+   `Sylius\PayPalPlugin\Controller\UpdatePayPalOrderAction`
+      ```diff
+      public function __construct(
+             PaymentProviderInterface $paymentProvider,
+             CacheAuthorizeClientApiInterface $authorizeClientApi,
+      -      OrderDetailsApiInterface $orderDetailsApi,
+      +      ?OrderDetailsApiInterface $orderDetailsApi,
+             UpdateOrderApiInterface $updateOrderApi,
+             AddressFactoryInterface $addressFactory,
+             OrderProcessorInterface $orderProcessor,
+      )
+      ```
+
+   `Sylius\PayPalPlugin\Payum\Action\CompleteOrderAction`
+      ```diff
+      public function __construct(
+             CacheAuthorizeClientApiInterface $authorizeClientApi,
+             UpdateOrderApiInterface $updateOrderApi,
+             CompleteOrderApiInterface $completeOrderApi,
+             OrderDetailsApiInterface $orderDetailsApi,
+             PayPalAddressProcessorInterface $payPalAddressProcessor,
+             PaymentUpdaterInterface $payPalPaymentUpdater,
+             StateResolverInterface $orderPaymentStateResolver,
+      -      PayPalItemDataProviderInterface $payPalItemsDataProvider,
+      +      ?PayPalItemDataProviderInterface $payPalItemsDataProvider,
+      )
+      ```
 
 ### UPGRADE FROM 1.5.1 to 1.6.0
 
