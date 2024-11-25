@@ -22,22 +22,13 @@ use Sylius\Behat\Service\NotificationCheckerInterface;
 use Tests\Sylius\PayPalPlugin\Behat\Element\DownloadPayPalReportElementInterface;
 use Webmozart\Assert\Assert;
 
-final class ManagingPaymentMethodsContext implements Context
+final readonly class ManagingPaymentMethodsContext implements Context
 {
-    private DownloadPayPalReportElementInterface $downloadPayPalReportElement;
-
-    private NotificationCheckerInterface $notificationChecker;
-
-    private CreatePageInterface $createPage;
-
     public function __construct(
-        DownloadPayPalReportElementInterface $downloadPayPalReportElement,
-        NotificationCheckerInterface $notificationChecker,
-        CreatePageInterface $createPage,
+        private DownloadPayPalReportElementInterface $downloadPayPalReportElement,
+        private NotificationCheckerInterface $notificationChecker,
+        private CreatePageInterface $createPage,
     ) {
-        $this->downloadPayPalReportElement = $downloadPayPalReportElement;
-        $this->notificationChecker = $notificationChecker;
-        $this->createPage = $createPage;
     }
 
     /**

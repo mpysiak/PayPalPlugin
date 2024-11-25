@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\ApiPlatform;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Provider\AvailableCountriesProviderInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;

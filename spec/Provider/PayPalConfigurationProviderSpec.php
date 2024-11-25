@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\Provider;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Repository\PaymentMethodRepositoryInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Provider\PayPalConfigurationProviderInterface;
 
 final class PayPalConfigurationProviderSpec extends ObjectBehavior

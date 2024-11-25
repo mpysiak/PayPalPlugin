@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\Processor;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 use Sylius\PayPalPlugin\Manager\PaymentStateManagerInterface;
 
 final class PayPalOrderCompleteProcessorSpec extends ObjectBehavior

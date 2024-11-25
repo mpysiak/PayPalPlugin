@@ -1,0 +1,12 @@
+winzou_state_machine:
+    sylius_payment:
+        callbacks:
+            before:
+                refund_pay_pal_order:
+                    on: [ 'refund' ]
+                    do: [ '@Sylius\PayPalPlugin\Processor\PaymentRefundProcessorInterface', 'refund' ]
+                    args: [ 'object' ]
+        transitions:
+            cancel:
+                from: [ cart ]
+                to: cancelled

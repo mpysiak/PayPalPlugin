@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace spec\Sylius\PayPalPlugin\Payum\Action;
 
-use Payum\Core\Model\GatewayConfigInterface;
 use Payum\Core\Request\Capture;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\PayumBundle\Request\ResolveNextRoute;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\Component\Payment\Model\GatewayConfigInterface;
 
 final class ResolveNextRouteActionSpec extends ObjectBehavior
 {

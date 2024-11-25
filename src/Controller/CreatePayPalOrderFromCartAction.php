@@ -15,10 +15,7 @@ namespace Sylius\PayPalPlugin\Controller;
 
 use Doctrine\Persistence\ObjectManager;
 use GuzzleHttp\Exception\GuzzleException;
-use Payum\Core\Payum;
-use SM\Factory\FactoryInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
-use Sylius\Component\Core\Repository\OrderRepositoryInterface;
 use Sylius\PayPalPlugin\Provider\OrderProviderInterface;
 use Sylius\PayPalPlugin\Resolver\CapturePaymentResolverInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,46 +23,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
-final class CreatePayPalOrderFromCartAction
+final readonly class CreatePayPalOrderFromCartAction
 {
     public function __construct(
-        private readonly ?Payum $payum,
-        private readonly ?OrderRepositoryInterface $orderRepository,
-        private readonly ?FactoryInterface $stateMachineFactory,
-        private readonly ObjectManager $paymentManager,
-        private readonly OrderProviderInterface $orderProvider,
-        private readonly CapturePaymentResolverInterface $capturePaymentResolver,
+        private ObjectManager $paymentManager,
+        private OrderProviderInterface $orderProvider,
+        private CapturePaymentResolverInterface $capturePaymentResolver,
     ) {
-        if (null !== $this->payum) {
-            trigger_deprecation(
-                'sylius/paypal-plugin',
-                '1.6',
-                sprintf(
-                    'Passing an instance of "%s" as the first argument is deprecated and will be prohibited in 2.0',
-                    Payum::class,
-                ),
-            );
-        }
-        if (null !== $this->orderRepository) {
-            trigger_deprecation(
-                'sylius/paypal-plugin',
-                '1.6',
-                sprintf(
-                    'Passing an instance of "%s" as the second argument is deprecated and will be prohibited in 2.0',
-                    OrderRepositoryInterface::class,
-                ),
-            );
-        }
-        if (null !== $this->stateMachineFactory) {
-            trigger_deprecation(
-                'sylius/paypal-plugin',
-                '1.6',
-                sprintf(
-                    'Passing an instance of "%s" as the third argument is deprecated and will be prohibited in 2.0',
-                    FactoryInterface::class,
-                ),
-            );
-        }
     }
 
     public function __invoke(Request $request): Response

@@ -25,18 +25,12 @@ use Sylius\Component\Payment\Model\PaymentMethodInterface;
 use Sylius\Component\Payment\Resolver\DefaultPaymentMethodResolverInterface;
 use Webmozart\Assert\Assert;
 
-final class PayPalDefaultPaymentMethodResolver implements DefaultPaymentMethodResolverInterface
+final readonly class PayPalDefaultPaymentMethodResolver implements DefaultPaymentMethodResolverInterface
 {
-    private PaymentMethodRepositoryInterface $paymentMethodRepository;
-
-    private DefaultPaymentMethodResolverInterface $decoratedDefaultPaymentMethodResolver;
-
     public function __construct(
-        DefaultPaymentMethodResolverInterface $decoratedDefaultPaymentMethodResolver,
-        PaymentMethodRepositoryInterface $paymentMethodRepository,
+        private DefaultPaymentMethodResolverInterface $decoratedDefaultPaymentMethodResolver,
+        private PaymentMethodRepositoryInterface $paymentMethodRepository,
     ) {
-        $this->decoratedDefaultPaymentMethodResolver = $decoratedDefaultPaymentMethodResolver;
-        $this->paymentMethodRepository = $paymentMethodRepository;
     }
 
     public function getDefaultPaymentMethod(BasePaymentInterface $payment, string $prioritisedPayment = 'sylius.pay_pal'): PaymentMethodInterface
