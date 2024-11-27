@@ -6,7 +6,7 @@
     composer require sylius/paypal-plugin
     ```
 
-2. Import routes
+1. Import routes
 
     ```yaml
     # config/routes/sylius_shop.yaml
@@ -29,7 +29,7 @@
         resource: "@SyliusPayPalPlugin/config/webhook_routing.yaml"
     ```
 
-3. Import configuration
+1. Import configuration
 
    ```yaml
    # config/packages/_sylius.yaml
@@ -39,7 +39,32 @@
        - { resource: "@SyliusPayPalPlugin/config/config.yaml" }
    ```
 
-4. Apply migrations
+1. Add `FOS\RestBundle` class to your `config/bundles.php` file
+
+    ```php
+    return [
+        // ...
+        FOS\RestBundle\FOSRestBundle::class => ['all' => true],
+    ];
+    ```
+
+1. Add `FOS\RestBundle` configuration to your `config/packages/fos_rest.yaml` file
+
+    ```yaml
+     fos_rest:
+        exception: true
+        view:
+            formats:
+                json: true
+                xml:  true
+            empty_content: 204
+        format_listener:
+            rules:
+                - { path: '^/api/.*', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
+                - { path: '^/', stop: true }
+   ```
+
+1. Apply migrations
 
    ```
    bin/console doctrine:migrations:migrate -n
