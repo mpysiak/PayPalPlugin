@@ -39,15 +39,6 @@
        - { resource: "@SyliusPayPalPlugin/config/config.yaml" }
    ```
 
-1. Add `FOS\RestBundle` class to your `config/bundles.php` file
-
-    ```php
-    return [
-        // ...
-        FOS\RestBundle\FOSRestBundle::class => ['all' => true],
-    ];
-    ```
-
 1. Add `FOS\RestBundle` configuration to your `config/packages/fos_rest.yaml` file
 
     ```yaml
