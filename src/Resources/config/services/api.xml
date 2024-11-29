@@ -3,6 +3,7 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="sylius.pay_pal.request_trials_limit">5</parameter>
+        <parameter key="sylius_paypal.request_trials_limit">%sylius.pay_pal.request_trials_limit%</parameter>
         <parameter key="sylius.paypal.logging_level_increased">true</parameter>
     </parameters>
     <services>
@@ -16,9 +17,9 @@
             <argument type="service" id="Sylius\PayPalPlugin\Provider\UuidProviderInterface" />
             <argument type="service" id="Sylius\PayPalPlugin\Provider\PayPalConfigurationProviderInterface" />
             <argument type="service" id="sylius.context.channel" />
-            <argument>%sylius.pay_pal.api_base_url%</argument>
-            <argument>%sylius.pay_pal.request_trials_limit%</argument>
-            <argument>%sylius.paypal.logging.increased%</argument>
+            <argument>%sylius_paypal.api_base_url%</argument>
+            <argument>%sylius_paypal.request_trials_limit%</argument>
+            <argument>%sylius_paypal.logging.increased%</argument>
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
             <argument type="service" id="Psr\Http\Message\StreamFactoryInterface" />
         </service>
@@ -91,7 +92,7 @@
             class="Sylius\PayPalPlugin\Api\WebhookApi"
         >
             <argument type="service" id="Http\Discovery\Psr18Client" />
-            <argument>%sylius.pay_pal.api_base_url%</argument>
+            <argument>%sylius_paypal.api_base_url%</argument>
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
             <argument type="service" id="Psr\Http\Message\StreamFactoryInterface" />
         </service>
