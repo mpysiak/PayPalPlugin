@@ -24,6 +24,7 @@ use Sylius\Component\Core\Repository\PaymentRepositoryInterface;
 use Sylius\Component\Payment\PaymentTransitions;
 use Sylius\PayPalPlugin\Api\CacheAuthorizeClientApiInterface;
 use Sylius\PayPalPlugin\Api\OrderDetailsApiInterface;
+use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Sylius\PayPalPlugin\Payum\Action\StatusAction;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -70,7 +71,7 @@ final class CompletePaidPaymentsCommand extends Command
             $paymentMethod = $payment->getMethod();
             /** @var GatewayConfigInterface $gatewayConfig */
             $gatewayConfig = $paymentMethod->getGatewayConfig();
-            if ($gatewayConfig->getFactoryName() !== 'sylius.pay_pal') {
+            if ($gatewayConfig->getFactoryName() !== SyliusPayPalExtension::PAYPAL_FACTORY_NAME) {
                 continue;
             }
 

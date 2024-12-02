@@ -25,6 +25,8 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 final class SyliusPayPalExtension extends Extension implements PrependExtensionInterface
 {
+    public const PAYPAL_FACTORY_NAME = 'sylius.pay_pal';
+
     public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
