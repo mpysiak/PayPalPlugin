@@ -16,6 +16,7 @@ namespace Sylius\PayPalPlugin\Provider;
 use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Repository\PaymentMethodRepositoryInterface;
+use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Sylius\PayPalPlugin\Exception\PayPalPaymentMethodNotFoundException;
 
 final readonly class PayPalPaymentMethodProvider implements PayPalPaymentMethodProviderInterface
@@ -33,7 +34,7 @@ final readonly class PayPalPaymentMethodProvider implements PayPalPaymentMethodP
             /** @var GatewayConfigInterface $gatewayConfig */
             $gatewayConfig = $paymentMethod->getGatewayConfig();
 
-            if ($gatewayConfig->getFactoryName() === 'sylius.pay_pal') {
+            if ($gatewayConfig->getFactoryName() === SyliusPayPalExtension::PAYPAL_FACTORY_NAME) {
                 return $paymentMethod;
             }
         }

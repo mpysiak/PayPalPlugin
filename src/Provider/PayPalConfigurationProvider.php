@@ -17,6 +17,7 @@ use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Repository\PaymentMethodRepositoryInterface;
+use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Webmozart\Assert\Assert;
 
 final readonly class PayPalConfigurationProvider implements PayPalConfigurationProviderInterface
@@ -50,7 +51,7 @@ final readonly class PayPalConfigurationProvider implements PayPalConfigurationP
             /** @var GatewayConfigInterface $gatewayConfig */
             $gatewayConfig = $method->getGatewayConfig();
 
-            if ($gatewayConfig->getFactoryName() !== 'sylius.pay_pal') {
+            if ($gatewayConfig->getFactoryName() !== SyliusPayPalExtension::PAYPAL_FACTORY_NAME) {
                 continue;
             }
 

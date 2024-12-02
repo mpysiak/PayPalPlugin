@@ -16,6 +16,7 @@ namespace Sylius\PayPalPlugin\Listener;
 use Payum\Core\Model\GatewayConfigInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
+use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Sylius\PayPalPlugin\Exception\PayPalPaymentMethodNotFoundException;
 use Sylius\PayPalPlugin\Onboarding\Initiator\OnboardingInitiatorInterface;
 use Sylius\PayPalPlugin\Provider\FlashBagProvider;
@@ -68,7 +69,7 @@ final readonly class PayPalPaymentMethodListener
         /** @var GatewayConfigInterface $gatewayConfig */
         $gatewayConfig = $paymentMethod->getGatewayConfig();
 
-        return $gatewayConfig->getFactoryName() === 'sylius.pay_pal';
+        return $gatewayConfig->getFactoryName() === SyliusPayPalExtension::PAYPAL_FACTORY_NAME;
     }
 
     private function isTherePayPalPaymentMethod(): bool
