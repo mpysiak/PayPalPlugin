@@ -10,6 +10,8 @@
    - `Sylius\PayPalPlugin\Form\Type\SelectPaymentType`
    - `Sylius\PayPalPlugin\Controller\PayPalOrderItemController`
 
+1. The following old parameters have been deprecated and will be removed in PayPalPlugin 2.0. Use the corresponding new parameters instead:
+
    | Old parameter                            | New parameter                            | 
    |------------------------------------------|------------------------------------------|
    | `sylius.paypal.prioritized_factory_name` | `sylius_paypal.prioritized_factory_name` |
