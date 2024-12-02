@@ -14,13 +14,14 @@
 
 1. The definition of `Sylius\PayPalPlugin\Provider\PayPalOrderProviderInterface` has been removed because neither the interface nor the class exists in the codebase.
 
+1. The definition of `Http\Discovery\Psr18Client` has been deprecated and will be removed in Sylius/PayPalPlugin 2.0. Use `sylius.http_client` service instead.
+
 1. Aliases for the following services have been introduced to standardize service IDs and will replace the incorrect IDs
    in PayPalPlugin 2.0. The old service IDs are now deprecated and will be removed in PayPalPlugin 2.0.
    Please update your service definitions accordingly to ensure compatibility with next major version of PayPalPlugin.
 
    | Old ID                                                                    | New ID                                                                  |
    |---------------------------------------------------------------------------|-------------------------------------------------------------------------|
-   | `Http\Discovery\Psr18Client`                                              | `sylius_paypal.http.discovery.psr_18_client`                            |
    | `Sylius\PayPalPlugin\ApiPlatform\PayPalPayment`                           | `sylius_paypal.api_platform.paypal_payment`                             |
    | `Sylius\PayPalPlugin\Command\CompletePaidPaymentsCommand`                 | `sylius_paypal.console.command.complete_paid_payments`                  |
    | `Sylius\PayPalPlugin\Controller\CancelLastPayPalPaymentAction`            | `sylius_paypal.controller.cancel_last_paypal_payment`                   |

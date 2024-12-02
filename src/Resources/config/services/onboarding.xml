@@ -12,9 +12,9 @@
 -->
 
 <container
-        xmlns="http://symfony.com/schema/dic/services"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
 >
     <services>
         <service
@@ -31,11 +31,9 @@
             id="Sylius\PayPalPlugin\Onboarding\Processor\OnboardingProcessorInterface"
             class="Sylius\PayPalPlugin\Onboarding\Processor\BasicOnboardingProcessor"
         >
-            <argument type="service" id="Http\Discovery\Psr18Client" />
-            <argument type="service" id="Sylius\PayPalPlugin\Registrar\SellerWebhookRegistrarInterface" />
-            <argument>%sylius_paypal.facilitator_url%</argument>
-            <argument type="service" id="sylius_paypal.http.discovery.psr_18_client" />
+            <argument type="service" id="sylius.http_client" />
             <argument type="service" id="sylius_paypal.registrar.seller_webhook" />
+            <argument>%sylius_paypal.facilitator_url%</argument>
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
         </service>
         <service id="sylius_paypal.onboarding.processor.basic" alias="Sylius\PayPalPlugin\Onboarding\Processor\OnboardingProcessorInterface" />

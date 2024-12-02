@@ -12,9 +12,9 @@
 -->
 
 <container
-        xmlns="http://symfony.com/schema/dic/services"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
 >
     <parameters>
         <parameter key="sylius.pay_pal.request_trials_limit">5</parameter>
@@ -22,14 +22,15 @@
         <parameter key="sylius.paypal.logging_level_increased">true</parameter>
     </parameters>
     <services>
-        <service id="Http\Discovery\Psr18Client" class="Http\Discovery\Psr18Client" />
-        <service id="sylius_paypal.http.discovery.psr_18_client" alias="Http\Discovery\Psr18Client" />
+        <service id="Http\Discovery\Psr18Client" class="Http\Discovery\Psr18Client" >
+            <deprecated package="sylius/paypal-plugin" version="1.7">The "%service_id%" service is deprecated since 1.7 and will be removed in 2.0. Use "sylius.http_client" service instead.</deprecated>
+        </service>
 
         <service
             id="Sylius\PayPalPlugin\Client\PayPalClientInterface"
             class="Sylius\PayPalPlugin\Client\PayPalClient"
         >
-            <argument type="service" id="sylius_paypal.http.discovery.psr_18_client" />
+            <argument type="service" id="sylius.http_client" />
             <argument type="service" id="monolog.logger.paypal" />
             <argument type="service" id="sylius_paypal.provider.uuid" />
             <argument type="service" id="sylius_paypal.provider.paypal_configuration" />
@@ -82,7 +83,7 @@
             id="Sylius\PayPalPlugin\Api\GenericApiInterface"
             class="Sylius\PayPalPlugin\Api\GenericApi"
         >
-            <argument type="service" id="sylius_paypal.http.discovery.psr_18_client" />
+            <argument type="service" id="sylius.http_client" />
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
         </service>
         <service id="sylius_paypal.api.generic" alias="Sylius\PayPalPlugin\Api\GenericApiInterface" />
@@ -117,9 +118,8 @@
             id="Sylius\PayPalPlugin\Api\WebhookApiInterface"
             class="Sylius\PayPalPlugin\Api\WebhookApi"
         >
-            <argument type="service" id="Http\Discovery\Psr18Client" />
+            <argument type="service" id="sylius.http_client" />
             <argument>%sylius_paypal.api_base_url%</argument>
-            <argument type="service" id="sylius_paypal.http.discovery.psr_18_client" />
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
             <argument type="service" id="Psr\Http\Message\StreamFactoryInterface" />
         </service>
