@@ -10,6 +10,19 @@
    - `Sylius\PayPalPlugin\Form\Type\SelectPaymentType`
    - `Sylius\PayPalPlugin\Controller\PayPalOrderItemController`
 
+1. The following old parameters have been deprecated and will be removed in PayPalPlugin 2.0. Use the corresponding new parameters instead:
+
+   | Old parameter                            | New parameter                            | 
+   |------------------------------------------|------------------------------------------|
+   | `sylius.paypal.prioritized_factory_name` | `sylius_paypal.prioritized_factory_name` |
+   | `sylius.pay_pal.request_trials_limit`    | `sylius_paypal.request_trials_limit`     |
+   | `sylius.paypal.logging.increased`        | `sylius_paypal.logging.increased`        |
+   | `sylius.pay_pal.facilitator_url`         | `sylius_paypal.facilitator_url`          |
+   | `sylius.pay_pal.api_base_url`            | `sylius_paypal.api_base_url`             |
+   | `sylius.pay_pal.reports_sftp_host`       | `sylius_paypal.reports_sftp_host`        |
+
+1. The parameter `sylius.paypal.logging_level_increased` has been deprecated and will be removed in PayPalPlugin 2.0, because it is not used.
+
 1. The following constructor signatures have been changed:
 
    `Sylius\PayPalPlugin\Controller\ProcessPayPalOrderAction`

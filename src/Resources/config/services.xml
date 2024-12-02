@@ -7,6 +7,7 @@
 
     <parameters>
         <parameter key="sylius.paypal.prioritized_factory_name">sylius.pay_pal</parameter>
+        <parameter key="sylius_paypal.prioritized_factory_name">%sylius.paypal.prioritized_factory_name%</parameter>
     </parameters>
 
     <services>
@@ -177,7 +178,7 @@
             decorates="sylius.payment_methods_resolver"
         >
             <argument type="service" id=".inner" />
-            <argument>%sylius.paypal.prioritized_factory_name%</argument>
+            <argument>%sylius_paypal.prioritized_factory_name%</argument>
         </service>
 
         <service
@@ -193,7 +194,7 @@
         />
 
         <service id="sylius.paypal.client.sftp" class="phpseclib\Net\SFTP">
-            <argument>%sylius.pay_pal.reports_sftp_host%</argument>
+            <argument>%sylius_paypal.reports_sftp_host%</argument>
         </service>
 
         <service
@@ -229,7 +230,7 @@
             class="Sylius\PayPalPlugin\Enabler\PayPalPaymentMethodEnabler"
         >
             <argument type="service" id="Http\Discovery\Psr18Client" />
-            <argument>%sylius.pay_pal.facilitator_url%</argument>
+            <argument>%sylius_paypal.facilitator_url%</argument>
             <argument type="service" id="sylius.manager.payment_method" />
             <argument type="service" id="Sylius\PayPalPlugin\Registrar\SellerWebhookRegistrarInterface" />
             <argument type="service" id="Psr\Http\Message\RequestFactoryInterface" />
