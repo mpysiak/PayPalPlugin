@@ -52,6 +52,13 @@ final class CompletePaidPaymentsCommand extends Command
                 ),
             );
         }
+
+        trigger_deprecation(
+            'sylius/paypal-plugin',
+            '1.7',
+            'The fifth argument of the constructor in class "%s" is deprecated and will be renamed to "stateMachine" in 2.0.',
+            self::class,
+        );
     }
 
     protected function configure(): void

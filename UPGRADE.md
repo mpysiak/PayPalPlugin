@@ -44,6 +44,7 @@
    | `Sylius\PayPalPlugin\EventListener\Workflow\CompletePayPalOrderListener`  | `sylius_paypal.listener.workflow.complete_paypal_order`                 |
    | `Sylius\PayPalPlugin\EventListener\Workflow\RefundPaymentListener`        | `sylius_paypal.listener.workflow.refund_payment`                        |
    | `Sylius\PayPalPlugin\Factory\PayPalPaymentMethodNewResourceFactory`       | `sylius_paypal.factory.paypal_payment_method_new_resource`              |
+   | `Sylius\PayPalPlugin\Form\Extension\PaymentMethodTypeExtension`           | `sylius_paypal.form.extension.payment_method`                           |
    | `Sylius\PayPalPlugin\Form\Type\PayPalConfigurationType`                   | `sylius_paypal.form.type.paypal_configuration`                          |
    | `Sylius\PayPalPlugin\Listener\PayPalPaymentMethodListener`                | `sylius_paypal.listener.paypal_payment_method`                          |
    | `Sylius\PayPalPlugin\Payum\Action\AuthorizeAction`                        | `sylius_paypal.payum.action.authorize`                                  |
