@@ -6,6 +6,8 @@
 
 1. The minimum supported version of PHP has been increased to 8.2.
 
+1. The configuration root key has been changed from `sylius_pay_pal` to `sylius_paypal`.
+
 1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
 
 1. The directories structure has been updated to the current Symfony recommendations:

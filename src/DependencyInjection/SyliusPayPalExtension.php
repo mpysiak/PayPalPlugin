@@ -27,6 +27,11 @@ final class SyliusPayPalExtension extends Extension implements PrependExtensionI
 {
     public const PAYPAL_FACTORY_NAME = 'sylius.pay_pal';
 
+    public function getAlias(): string
+    {
+        return 'sylius_paypal';
+    }
+
     public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);

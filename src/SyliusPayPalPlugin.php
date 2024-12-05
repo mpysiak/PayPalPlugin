@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sylius\PayPalPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class SyliusPayPalPlugin extends Bundle
@@ -23,5 +24,10 @@ final class SyliusPayPalPlugin extends Bundle
     public function getPath(): string
     {
         return \dirname(__DIR__);
+    }
+
+    public function getContainerExtension(): ?ExtensionInterface
+    {
+        return $this->createContainerExtension();
     }
 }
