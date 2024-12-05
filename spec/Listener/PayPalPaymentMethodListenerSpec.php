@@ -91,7 +91,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
         $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
 
-        $flashBag->add('error', 'sylius.pay_pal.more_than_one_seller_not_allowed')->shouldBeCalled();
+        $flashBag->add('error', 'sylius_paypal.more_than_one_seller_not_allowed')->shouldBeCalled();
         $session->getBag('flashes')->willReturn($flashBag);
         $requestStack->getSession()->willReturn($session);
 

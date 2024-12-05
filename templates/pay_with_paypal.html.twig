@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ 'sylius.pay_pal.pay_with_pay_pal'|trans }}</title>
+        <title>{{ 'sylius_paypal.pay_with_pay_pal'|trans }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         {{ encore_entry_link_tags('shop-entry', null, 'shop') }}
@@ -181,7 +181,7 @@
     <div id="paypal-payment-container" class="ui segment loadable">
         <div class="back-button-container">
             <a href="{{ path('sylius_shop_order_show', {'tokenValue': order_token}) }}" class="back-button">
-                {{ 'sylius.pay_pal.back_to_store'|trans }}
+                {{ 'sylius_paypal.back_to_store'|trans }}
             </a>
         </div>
         <div class="container">
@@ -189,7 +189,7 @@
             <div class="header padding"><img draggable="false" id="sylius-logo" src="https://paypal.sylius.com/assets/img/logo.png" alt="logo"/></div>
             <div id="tabs" class="ui top attached tabular menu">
                 <div class="active item" data-tab="paypal">PayPal</div>
-                <div class="item" data-tab="card">{{ 'sylius.pay_pal.credit_card'|trans }}</div>
+                <div class="item" data-tab="card">{{ 'sylius_paypal.credit_card'|trans }}</div>
             </div>
             <div class="ui bottom attached active tab segment" data-tab="paypal">
                 <div class="button-container padding">
@@ -200,17 +200,17 @@
                 <div class="button-container padding">
                     <div id="advanced-cards-container"></div>
                     <form id="advanced-cards-form">
-                        <label for="card-number">{{ 'sylius.pay_pal.credit_card_number'|trans }}</label>
+                        <label for="card-number">{{ 'sylius_paypal.credit_card_number'|trans }}</label>
                         <div id="card-number" class="input"><div id="card-image"></div></div>
-                        <label for="expiration-date">{{ 'sylius.pay_pal.expiration_date'|trans }}</label>
+                        <label for="expiration-date">{{ 'sylius_paypal.expiration_date'|trans }}</label>
                         <div id="expiration-date" class="input"></div>
-                        <label for="cvv">{{ 'sylius.pay_pal.cvv'|trans }}</label>
+                        <label for="cvv">{{ 'sylius_paypal.cvv'|trans }}</label>
                         <div id="cvv" class="input"></div>
                         <label for='card-holder-name'>{{ 'sylius.form.credit_card.cardholder_name'|trans }}</label>
                         <br/><input type='text' id='card-holder-name' name='card-holder-name' autocomplete='off' placeholder='{{ 'sylius.form.credit_card.cardholder_name'|trans }}' value="{{ billing_address.fullName }}"/>
                         <div class="checkbox-grid">
                             <input type="checkbox" id="billing-info" checked />
-                            <label for="billing-info">{{ 'sylius.pay_pal.billing_info'|trans }}</label>
+                            <label for="billing-info">{{ 'sylius_paypal.billing_info'|trans }}</label>
                         </div>
                         <div id="billing-container" class="hidden">
                             <br/><label for='card-billing-address-street'>{{ 'sylius.ui.billing_address'|trans }}</label>
@@ -220,7 +220,7 @@
                             <input type='text' id='card-billing-address-zip' name='card-billing-address-zip' autocomplete='off' placeholder='{{ 'sylius.ui.postcode'|trans }}' value="{{ billing_address.postcode }}"/>
                             <input type='text' id='card-billing-address-country' name='card-billing-address-country' autocomplete='off' placeholder='{{ 'sylius.ui.country'|trans }}' value="{{ billing_address.countryCode }}" />
                         </div>
-                        <button value="submit" id="submit" class="ui button yellow fluid">{{ 'sylius.pay_pal.pay_with_card'|trans }}</button>
+                        <button value="submit" id="submit" class="ui button yellow fluid">{{ 'sylius_paypal.pay_with_card'|trans }}</button>
                     </form>
                 </div>
             </div>
@@ -237,7 +237,7 @@
         let cancelPayPalPaymentUrl = "{{ path('sylius_paypal_plugin_cancel_checkout_payment') }}";
         let updatePayPalOrderUrl = "{{ path('sylius_paypal_plugin_update_paypal_order') }}";
         let validForm = false;
-        let invalidFormMessage = "{{ 'sylius.pay_pal.invalid_form'|trans }}";
+        let invalidFormMessage = "{{ 'sylius_paypal.invalid_form'|trans }}";
         let cancelPreviousPaymentUrl = "{{ path('sylius_paypal_plugin_cancel_last_payment', {'token': order_token}) }}";
 
         window.addEventListener("beforeunload", function(event) {
@@ -366,7 +366,7 @@
                 fields: {
                     number: {
                         selector: '#card-number',
-                        placeholder: '{{ 'sylius.pay_pal.credit_card_number'|trans }}',
+                        placeholder: '{{ 'sylius_paypal.credit_card_number'|trans }}',
                         required: 'required',
                     },
                     cvv: {

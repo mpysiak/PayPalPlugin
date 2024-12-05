@@ -45,7 +45,7 @@ final readonly class CreatePayPalOrderFromCartAction
         } catch (GuzzleException $exception) {
             /** @var FlashBagInterface $flashBag */
             $flashBag = $request->getSession()->getBag('flashes');
-            $flashBag->add('error', 'sylius.pay_pal.something_went_wrong');
+            $flashBag->add('error', 'sylius_paypal.something_went_wrong');
 
             return new JsonResponse([], Response::HTTP_BAD_REQUEST);
         }
