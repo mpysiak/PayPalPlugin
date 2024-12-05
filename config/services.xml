@@ -21,8 +21,7 @@
     </imports>
 
     <parameters>
-        <parameter key="sylius.paypal.prioritized_factory_name">sylius.pay_pal</parameter>
-        <parameter key="sylius_paypal.prioritized_factory_name">%sylius.paypal.prioritized_factory_name%</parameter>
+        <parameter key="sylius_paypal.prioritized_factory_name">sylius.pay_pal</parameter>
     </parameters>
 
     <services>
