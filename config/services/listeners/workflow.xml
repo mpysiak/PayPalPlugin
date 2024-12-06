@@ -17,18 +17,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
 >
     <services>
-        <service id="Sylius\PayPalPlugin\EventListener\Workflow\CompletePayPalOrderListener">
+        <service id="sylius_paypal.listener.workflow.complete_paypal_order" class="Sylius\PayPalPlugin\EventListener\Workflow\CompletePayPalOrderListener">
             <argument type="service" id="sylius_paypal.processor.paypal_order_complete" />
 
             <tag name="kernel.event_listener" event="workflow.sylius_order_checkout.completed.complete" priority="100" />
         </service>
-        <service id="sylius_paypal.listener.workflow.complete_paypal_order" alias="Sylius\PayPalPlugin\EventListener\Workflow\CompletePayPalOrderListener" />
 
-        <service id="Sylius\PayPalPlugin\EventListener\Workflow\RefundPaymentListener">
+        <service id="sylius_paypal.listener.workflow.refund_payment" class="Sylius\PayPalPlugin\EventListener\Workflow\RefundPaymentListener">
             <argument type="service" id="sylius_paypal.processor.payment_refund" />
 
             <tag name="kernel.event_listener" event="workflow.sylius_payment.transition.refund" priority="100" />
         </service>
-        <service id="sylius_paypal.listener.workflow.refund_payment" alias="Sylius\PayPalPlugin\EventListener\Workflow\RefundPaymentListener" />
     </services>
 </container>

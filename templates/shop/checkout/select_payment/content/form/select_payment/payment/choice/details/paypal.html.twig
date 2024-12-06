@@ -1,5 +1,5 @@
 {% if hookable_metadata.context.method.gatewayConfig.factoryName == 'sylius.pay_pal' %}
     <div data-live-ignore>
-        {{ render(controller('Sylius\\PayPalPlugin\\Controller\\PayPalButtonsController::renderPaymentPageButtonsAction', {'orderId': hookable_metadata.context.order.id})) }}
+        {{ render(controller('sylius_paypal.controller.paypal_buttons::renderPaymentPageButtonsAction', {'orderId': hookable_metadata.context.order.id})) }}
     </div>
 {% endif %}

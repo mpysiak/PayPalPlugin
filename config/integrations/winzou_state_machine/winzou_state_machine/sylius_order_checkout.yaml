@@ -4,5 +4,5 @@ winzou_state_machine:
             after:
                 complete_pay_pal_order:
                     on: [ 'complete' ]
-                    do: [ '@Sylius\PayPalPlugin\Processor\PayPalOrderCompleteProcessor', 'completePayPalOrder' ]
+                    do: [ '@sylius_paypal.processor.paypal_order_complete', 'completePayPalOrder' ]
                     args: [ 'object' ]

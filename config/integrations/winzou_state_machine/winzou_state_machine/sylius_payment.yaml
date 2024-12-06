@@ -4,7 +4,7 @@ winzou_state_machine:
             before:
                 refund_pay_pal_order:
                     on: [ 'refund' ]
-                    do: [ '@Sylius\PayPalPlugin\Processor\PaymentRefundProcessorInterface', 'refund' ]
+                    do: [ '@sylius_paypal.processor.payment_refund', 'refund' ]
                     args: [ 'object' ]
         transitions:
             cancel:

@@ -6,11 +6,6 @@
 
 1. The minimum supported version of PHP has been increased to 8.2.
 
-1. The following classes have been removed:
-   - `Sylius\PayPalPlugin\Controller\PayPalOrderItemController`
-   - `Sylius\PayPalPlugin\Form\Type\ChangePaymentMethodType`
-   - `Sylius\PayPalPlugin\Form\Type\SelectPaymentType`
-
 1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
 
 1. The directories structure has been updated to the current Symfony recommendations:
@@ -49,6 +44,104 @@
 
 1. **No need to overwrite templates**:  
    Thanks to the use of Twig Hooks and the refactoring of templates, you no longer need to overwrite templates to use plugin features.
+
+1. The following classes have been removed:
+   - `Sylius\PayPalPlugin\Controller\PayPalOrderItemController`
+   - `Sylius\PayPalPlugin\Form\Type\ChangePaymentMethodType`
+   - `Sylius\PayPalPlugin\Form\Type\SelectPaymentType`
+   - `Sylius\PayPalPlugin\Resolver\CompleteOrderPaymentResolver`
+   - `Sylius\PayPalPlugin\Resolver\CompleteOrderPaymentResolverInterface`
+
+1. The definition of `Http\Discovery\Psr18Client` has been removed, use `sylius.http_client` service instead.
+
+1. The command `sylius:pay-pal-plugin:complete-payments` has been changed to `sylius-paypal:complete-payments`.
+
+1. Aliases introduced in PayPalPlugin 1.7 have now become the primary service IDs in PayPalPlugin 2.0.
+   The old service IDs have been removed, and all references must be updated accordingly:
+
+   | Old ID                                                                    | New ID                                                                  |
+   |---------------------------------------------------------------------------|-------------------------------------------------------------------------|
+   | `Sylius\PayPalPlugin\ApiPlatform\PayPalPayment`                           | `sylius_paypal.api_platform.paypal_payment`                             |
+   | `Sylius\PayPalPlugin\Command\CompletePaidPaymentsCommand`                 | `sylius_paypal.console.command.complete_paid_payments`                  |
+   | `Sylius\PayPalPlugin\Controller\CancelLastPayPalPaymentAction`            | `sylius_paypal.controller.cancel_last_paypal_payment`                   |
+   | `Sylius\PayPalPlugin\Controller\CancelPayPalCheckoutPaymentAction`        | `sylius_paypal.controller.cancel_paypal_checkout_payment`               |
+   | `Sylius\PayPalPlugin\Controller\CancelPayPalOrderAction`                  | `sylius_paypal.controller.cancel_paypal_order`                          |
+   | `Sylius\PayPalPlugin\Controller\CancelPayPalPaymentAction`                | `sylius_paypal.controller.cancel_paypal_payment`                        |
+   | `Sylius\PayPalPlugin\Controller\CompletePayPalOrderAction`                | `sylius_paypal.controller.complete_paypal_order`                        |
+   | `Sylius\PayPalPlugin\Controller\CompletePayPalOrderFromPaymentPageAction` | `sylius_paypal.controller.complete_paypal_order_from_payment_page`      |
+   | `Sylius\PayPalPlugin\Controller\CreatePayPalOrderAction`                  | `sylius_paypal.controller.create_paypal_order`                          |
+   | `Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromCartAction`          | `sylius_paypal.controller.create_paypal_order_from_cart`                |
+   | `Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromPaymentPageAction`   | `sylius_paypal.controller.create_paypal_order_from_payment_page`        |
+   | `Sylius\PayPalPlugin\Controller\DownloadPayoutsReportAction`              | `sylius_paypal.controller.download_payouts_report`                      |
+   | `Sylius\PayPalPlugin\Controller\EnableSellerAction`                       | `sylius_paypal.controller.enable_seller`                                |
+   | `Sylius\PayPalPlugin\Controller\PayPalButtonsController`                  | `sylius_paypal.controller.paypal_buttons`                               |
+   | `Sylius\PayPalPlugin\Controller\PayPalPaymentOnErrorAction`               | `sylius_paypal.controller.paypal_payment_on_error`                      |
+   | `Sylius\PayPalPlugin\Controller\PayWithPayPalFormAction`                  | `sylius_paypal.controller.pay_with_paypal_form`                         |
+   | `Sylius\PayPalPlugin\Controller\ProcessPayPalOrderAction`                 | `sylius_paypal.controller.process_paypal_order`                         |
+   | `Sylius\PayPalPlugin\Controller\UpdatePayPalOrderAction`                  | `sylius_paypal.controller.update_paypal_order`                          |
+   | `Sylius\PayPalPlugin\Controller\Webhook\RefundOrderAction`                | `sylius_paypal.controller.webhook.refund_order`                         |
+   | `Sylius\PayPalPlugin\EventListener\Workflow\CompletePayPalOrderListener`  | `sylius_paypal.listener.workflow.complete_paypal_order`                 |
+   | `Sylius\PayPalPlugin\EventListener\Workflow\RefundPaymentListener`        | `sylius_paypal.listener.workflow.refund_payment`                        |
+   | `Sylius\PayPalPlugin\Factory\PayPalPaymentMethodNewResourceFactory`       | `sylius_paypal.factory.paypal_payment_method_new_resource`              |
+   | `Sylius\PayPalPlugin\Form\Extension\PaymentMethodTypeExtension`           | `sylius_paypal.form.extension.payment_method`                           |
+   | `Sylius\PayPalPlugin\Form\Type\PayPalConfigurationType`                   | `sylius_paypal.form.type.paypal_configuration`                          |
+   | `Sylius\PayPalPlugin\Listener\PayPalPaymentMethodListener`                | `sylius_paypal.listener.paypal_payment_method`                          |
+   | `Sylius\PayPalPlugin\Payum\Action\AuthorizeAction`                        | `sylius_paypal.payum.action.authorize`                                  |
+   | `Sylius\PayPalPlugin\Payum\Action\CaptureAction`                          | `sylius_paypal.payum.action.capture`                                    |
+   | `Sylius\PayPalPlugin\Payum\Action\CompleteOrderAction`                    | `sylius_paypal.payum.action.complete_order`                             |
+   | `Sylius\PayPalPlugin\Payum\Action\ResolveNextRouteAction`                 | `sylius_paypal.payum.action.resolve_next_route`                         |
+   | `Sylius\PayPalPlugin\Processor\AfterCheckoutOrderPaymentProcessor`        | `sylius_paypal.order_processing.order_payment_processor.after_checkout` |
+   | `Sylius\PayPalPlugin\Processor\OrderPaymentProcessor`                     | `sylius_paypal.order_processing.order_payment_processor.checkout`       |
+   | `Sylius\PayPalPlugin\Processor\PayPalAddressProcessor`                    | `sylius_paypal.processor.paypal_address`                                |
+   | `Sylius\PayPalPlugin\Processor\PayPalOrderCompleteProcessor`              | `sylius_paypal.processor.paypal_order_complete`                         |
+   | `Sylius\PayPalPlugin\Processor\UiPayPalPaymentRefundProcessor`            | `sylius_paypal.processor.ui_paypal_payment_refund`                      |
+   | `Sylius\PayPalPlugin\Resolver\PayPalDefaultPaymentMethodResolver`         | `sylius_paypal.resolver.payment_method.paypal`                          |
+   | `Sylius\PayPalPlugin\Resolver\PayPalPrioritisingPaymentMethodsResolver`   | `sylius_paypal.resolver.payment_method.paypal_prioritising`             |
+   | `Sylius\PayPalPlugin\Twig\OrderAddressExtension`                          | `sylius_paypal.twig.extension.order_address`                            |
+   | `Sylius\PayPalPlugin\Twig\PayPalExtension`                                | `sylius_paypal.twig.extension.paypal`                                   |
+   | `sylius.paypal.client.sftp`                                               | `sylius_paypal.client.sftp`                                             |
+   | `sylius.plugin.pay_pal.gateway_factory_builder`                           | `sylius_paypal.gateway_factory_builder`                                 |
+   | `sylius_pay_pal_plugin.repository.pay_pal_credentials`                    | `sylius_paypal.repository.paypal_credentials`                           |
+
+1. The following services had new aliases added in PayPalPlugin 1.7. In PayPalPlugin 2.0, these aliases have become
+   the primary service IDs, and the old service IDs remain as aliases:
+
+   | Current ID                                                              | New Alias                                           |
+   |-------------------------------------------------------------------------|-----------------------------------------------------|
+   | `Sylius\PayPalPlugin\Api\AuthorizeClientApiInterface`                   | `sylius_paypal.api.authorize_client`                |
+   | `Sylius\PayPalPlugin\Api\CacheAuthorizeClientApiInterface`              | `sylius_paypal.api.cache_authorize_client`          |
+   | `Sylius\PayPalPlugin\Api\CompleteOrderApiInterface`                     | `sylius_paypal.api.complete_order`                  |
+   | `Sylius\PayPalPlugin\Api\CreateOrderApiInterface`                       | `sylius_paypal.api.create_order`                    |
+   | `Sylius\PayPalPlugin\Api\GenericApiInterface`                           | `sylius_paypal.api.generic`                         |
+   | `Sylius\PayPalPlugin\Api\IdentityApiInterface`                          | `sylius_paypal.api.identity`                        |
+   | `Sylius\PayPalPlugin\Api\OrderDetailsApiInterface`                      | `sylius_paypal.api.order_details`                   |
+   | `Sylius\PayPalPlugin\Api\RefundPaymentApiInterface`                     | `sylius_paypal.api.refund_payment`                  |
+   | `Sylius\PayPalPlugin\Api\UpdateOrderApiInterface`                       | `sylius_paypal.api.update_order`                    |
+   | `Sylius\PayPalPlugin\Api\WebhookApiInterface`                           | `sylius_paypal.api.webhook`                         |
+   | `Sylius\PayPalPlugin\Client\PayPalClientInterface`                      | `sylius_paypal.client.paypal`                       |
+   | `Sylius\PayPalPlugin\Downloader\ReportDownloaderInterface`              | `sylius_paypal.downloader.report`                   |
+   | `Sylius\PayPalPlugin\Enabler\PaymentMethodEnablerInterface`             | `sylius_paypal.enabler.payment_method`              |
+   | `Sylius\PayPalPlugin\Generator\PayPalAuthAssertionGeneratorInterface`   | `sylius_paypal.generator.paypal_auth_assertion`     |
+   | `Sylius\PayPalPlugin\Manager\PaymentStateManagerInterface`              | `sylius_paypal.manager.payment_state`               |
+   | `Sylius\PayPalPlugin\Onboarding\Initiator\OnboardingInitiatorInterface` | `sylius_paypal.onboarding.initiator`                |
+   | `Sylius\PayPalPlugin\Onboarding\Processor\OnboardingProcessorInterface` | `sylius_paypal.onboarding.processor.basic`          |
+   | `Sylius\PayPalPlugin\Processor\PaymentCompleteProcessorInterface`       | `sylius_paypal.processor.payment_complete`          |
+   | `Sylius\PayPalPlugin\Processor\LocaleProcessorInterface`                | `sylius_paypal.processor.locale`                    |
+   | `Sylius\PayPalPlugin\Processor\PaymentRefundProcessorInterface`         | `sylius_paypal.processor.payment_refund`            |
+   | `Sylius\PayPalPlugin\Provider\AvailableCountriesProviderInterface`      | `sylius_paypal.provider.available_countries`        |
+   | `Sylius\PayPalPlugin\Provider\OrderItemNonNeutralTaxProviderInterface`  | `sylius_paypal.provider.order_item_non_neutral_tax` |
+   | `Sylius\PayPalPlugin\Provider\OrderProviderInterface`                   | `sylius_paypal.provider.order`                      |
+   | `Sylius\PayPalPlugin\Provider\PaymentProviderInterface`                 | `sylius_paypal.provider.payment`                    |
+   | `Sylius\PayPalPlugin\Provider\PaymentReferenceNumberProviderInterface`  | `sylius_paypal.provider.payment_reference_number`   |
+   | `Sylius\PayPalPlugin\Provider\PayPalConfigurationProviderInterface`     | `sylius_paypal.provider.paypal_configuration`       |
+   | `Sylius\PayPalPlugin\Provider\PayPalItemDataProviderInterface`          | `sylius_paypal.provider.paypal_item_data`           |
+   | `Sylius\PayPalPlugin\Provider\PayPalPaymentMethodProviderInterface`     | `sylius_paypal.provider.paypal_payment_method`      |
+   | `Sylius\PayPalPlugin\Provider\PayPalRefundDataProviderInterface`        | `sylius_paypal.provider.paypal_refund_data`         |
+   | `Sylius\PayPalPlugin\Provider\RefundReferenceNumberProviderInterface`   | `sylius_paypal.provider.refund_reference_number`    |
+   | `Sylius\PayPalPlugin\Provider\UuidProviderInterface`                    | `sylius_paypal.provider.uuid`                       |
+   | `Sylius\PayPalPlugin\Registrar\SellerWebhookRegistrarInterface`         | `sylius_paypal.registrar.seller_webhook`            |
+   | `Sylius\PayPalPlugin\Resolver\CapturePaymentResolverInterface`          | `sylius_paypal.resolver.capture_payment`            |
+   | `Sylius\PayPalPlugin\Updater\PaymentUpdaterInterface`                   | `sylius_paypal.updater.payment`                     |
 
 1. The following constructor signatures have been changed:
 
@@ -147,5 +240,17 @@
              PaymentUpdaterInterface $payPalPaymentUpdater,
              StateResolverInterface $orderPaymentStateResolver,
       -      ?PayPalItemDataProviderInterface $payPalItemsDataProvider,
+      )
+      ```
+
+   `Sylius\PayPalPlugin\Console\Command\CompletePaidPaymentsCommand`
+      ```diff
+      public function __construct(
+             PaymentRepositoryInterface $paymentRepository,
+             ObjectManager $paymentManager,
+             CacheAuthorizeClientApiInterface $authorizeClientApi,
+             OrderDetailsApiInterface $orderDetailsApi,
+      -      FactoryInterface|StateMachineInterface $stateMachineFactory,
+      +      StateMachineInterface $stateMachine,
       )
       ```
