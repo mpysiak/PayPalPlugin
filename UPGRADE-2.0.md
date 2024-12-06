@@ -10,6 +10,8 @@
 
 1. The translations' prefix has been changed from `sylius.pay_pal` to `sylius_paypal`.
 
+1. The factory name has been changed from `sylius.pay_pal` to `sylius_paypal`.
+
 1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
 
 1. The directories structure has been updated to the current Symfony recommendations:

@@ -1,4 +1,4 @@
-{% if hookable_metadata.context.method.gatewayConfig.factoryName == 'sylius.pay_pal' %}
+{% if hookable_metadata.context.method.gatewayConfig.factoryName == constant('Sylius\\PayPalPlugin\\DependencyInjection\\SyliusPayPalExtension::PAYPAL_FACTORY_NAME') %}
     <div data-live-ignore>
         {{ render(controller('sylius_paypal.controller.paypal_buttons::renderPaymentPageButtonsAction', {'orderId': hookable_metadata.context.order.id})) }}
     </div>

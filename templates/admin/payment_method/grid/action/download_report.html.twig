@@ -1,4 +1,4 @@
-{% if data.gatewayConfig.factoryName|default('') == 'sylius.pay_pal'
+{% if data.gatewayConfig.factoryName|default('') == constant('Sylius\\PayPalPlugin\\DependencyInjection\\SyliusPayPalExtension::PAYPAL_FACTORY_NAME')
     and data.gatewayConfig.config.reports_sftp_username is not empty
     and data.gatewayConfig.config.reports_sftp_password is not empty
 %}

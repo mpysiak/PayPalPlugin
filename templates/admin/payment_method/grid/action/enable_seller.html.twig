@@ -1,6 +1,6 @@
 {% import '@SyliusAdmin/shared/helper/button.html.twig' as button %}
 
-{% if not data.enabled and data.gatewayConfig.factoryName|default('') == 'sylius.pay_pal' %}
+{% if not data.enabled and data.gatewayConfig.factoryName|default('') == constant('Sylius\\PayPalPlugin\\DependencyInjection\\SyliusPayPalExtension::PAYPAL_FACTORY_NAME') %}
     <div data-bs-toggle="tooltip" data-bs-title="{{ 'sylius.ui.enable'|trans }}">
         <form action="{{ path('sylius_paypal_plugin_admin_enable_seller', {'id': data.id}) }}" method="post">
             {{ button.default({type: 'submit', icon: 'tabler:check', icon_class: 'icon text-purple', icon_only: true,}) }}

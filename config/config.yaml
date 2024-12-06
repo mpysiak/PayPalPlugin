@@ -6,7 +6,7 @@ sylius_admin:
     twig:
         payment_method:
             excluded_gateways:
-                - sylius.pay_pal
+                - !php/const Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension::PAYPAL_FACTORY_NAME
 
 sylius_core:
     checkout:
