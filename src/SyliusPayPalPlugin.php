@@ -26,6 +26,7 @@ final class SyliusPayPalPlugin extends Bundle
         return \dirname(__DIR__);
     }
 
+    // This method is overridden to change the alias to "sylius_paypal"
     public function getContainerExtension(): ?ExtensionInterface
     {
         return $this->createContainerExtension();
