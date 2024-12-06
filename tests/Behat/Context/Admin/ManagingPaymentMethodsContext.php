@@ -52,7 +52,7 @@ final readonly class ManagingPaymentMethodsContext implements Context
      */
     public function iTryToCreateANewPaymentMethodWithGatewayFactory(): void
     {
-        $this->createPage->tryToOpen(['factory' => 'sylius.pay_pal']);
+        $this->createPage->tryToOpen(['factory' => 'sylius_paypal']);
     }
 
     /**
