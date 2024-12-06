@@ -54,6 +54,8 @@
 
 1. The definition of `Http\Discovery\Psr18Client` has been removed, use `sylius.http_client` service instead.
 
+1. The command `sylius:pay-pal-plugin:complete-payments` has been changed to `sylius-paypal:complete-payments`.
+
 1. Aliases introduced in PayPalPlugin 1.7 have now become the primary service IDs in PayPalPlugin 2.0.
    The old service IDs have been removed, and all references must be updated accordingly:
 

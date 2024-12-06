@@ -24,10 +24,15 @@ use Sylius\PayPalPlugin\Api\CacheAuthorizeClientApiInterface;
 use Sylius\PayPalPlugin\Api\OrderDetailsApiInterface;
 use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Sylius\PayPalPlugin\Payum\Action\StatusAction;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'sylius-paypal:complete-payments',
+    description: 'Completes payments for completed PayPal orders',
+)]
 final class CompletePaidPaymentsCommand extends Command
 {
     public function __construct(
@@ -38,14 +43,6 @@ final class CompletePaidPaymentsCommand extends Command
         private readonly StateMachineInterface $stateMachine,
     ) {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this
-            ->setName('sylius:pay-pal-plugin:complete-payments')
-            ->setDescription('Completes payments for completed PayPal orders')
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

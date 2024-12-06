@@ -266,7 +266,7 @@
             <argument type="service" id="sylius_paypal.api.cache_authorize_client" />
             <argument type="service" id="sylius_paypal.api.order_details" />
             <argument type="service" id="sylius_abstraction.state_machine" />
-            <tag name="console.command" command="sylius:pay-pal-plugin:complete-payments" />
+            <tag name="console.command" />
         </service>
 
         <service
