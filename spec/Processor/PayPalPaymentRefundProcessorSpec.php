@@ -64,7 +64,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
     ): void {
         $payment->getMethod()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $payment->getDetails()->willReturn(['paypal_order_id' => '123123']);
 
         $authorizeClientApi->authorize($paymentMethod)->willReturn('TOKEN');
@@ -112,7 +112,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
     ): void {
         $payment->getMethod()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $gatewayConfig->getConfig()->willReturn(['client_id' => 'CLIENT_ID', 'client_secret' => 'CLIENT_SECRET']);
         $payment->getDetails()->willReturn([]);
 
@@ -134,7 +134,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
     ): void {
         $payment->getMethod()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $payment->getDetails()->willReturn(['paypal_order_id' => '123123']);
 
         $authorizeClientApi->authorize($paymentMethod)->willReturn('TOKEN');

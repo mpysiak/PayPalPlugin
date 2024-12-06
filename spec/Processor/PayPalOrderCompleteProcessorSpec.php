@@ -39,7 +39,7 @@ final class PayPalOrderCompleteProcessorSpec extends ObjectBehavior
 
         $payment->getMethod()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $paymentStateManager->complete($payment)->shouldBeCalled();
 

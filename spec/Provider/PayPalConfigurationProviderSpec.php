@@ -49,7 +49,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $otherGatewayConfig->getFactoryName()->willReturn('other');
 
         $payPalPaymentMethod->getGatewayConfig()->willReturn($payPalGatewayConfig);
-        $payPalGatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $payPalGatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $payPalGatewayConfig->getConfig()->willReturn(['client_id' => '123123']);
 
@@ -73,7 +73,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $otherGatewayConfig->getFactoryName()->willReturn('other');
 
         $payPalPaymentMethod->getGatewayConfig()->willReturn($payPalGatewayConfig);
-        $payPalGatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $payPalGatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $payPalGatewayConfig->getConfig()->willReturn(['partner_attribution_id' => '123123']);
 
@@ -118,7 +118,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $otherGatewayConfig->getFactoryName()->willReturn('other');
 
         $payPalPaymentMethod->getGatewayConfig()->willReturn($payPalGatewayConfig);
-        $payPalGatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $payPalGatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $payPalGatewayConfig->getConfig()->willReturn([]);
 
@@ -145,7 +145,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $otherGatewayConfig->getFactoryName()->willReturn('other');
 
         $payPalPaymentMethod->getGatewayConfig()->willReturn($payPalGatewayConfig);
-        $payPalGatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $payPalGatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $payPalGatewayConfig->getConfig()->willReturn([]);
 

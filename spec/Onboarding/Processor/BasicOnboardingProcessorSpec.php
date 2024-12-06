@@ -58,7 +58,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         PaymentMethodInterface $paymentMethod,
         Request $request,
     ): void {
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $gatewayConfig->getConfig()->willReturn([
             'client_id' => 'CLIENT-ID',
             'client_secret' => 'CLIENT-SECRET',
@@ -110,7 +110,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         PaymentMethodInterface $paymentMethod,
         Request $request,
     ): void {
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $gatewayConfig->getConfig()->willReturn([
             'client_id' => 'CLIENT-ID',
             'client_secret' => 'CLIENT-SECRET',
@@ -163,7 +163,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         PaymentMethodInterface $paymentMethod,
         Request $request,
     ): void {
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $gatewayConfig->getConfig()->willReturn([
             'client_id' => 'CLIENT-ID',
             'client_secret' => 'CLIENT-SECRET',
@@ -222,7 +222,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         Request $request,
     ): void {
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $request->query = new InputBag(['onboarding_id' => 'FACILITATOR-ID']);
 
@@ -252,7 +252,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         GatewayConfigInterface $gatewayConfig,
         PaymentMethodInterface $paymentMethod,
     ): void {
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
 
@@ -269,7 +269,7 @@ final class BasicOnboardingProcessorSpec extends ObjectBehavior
         PaymentMethodInterface $paymentMethod,
         Request $request,
     ): void {
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
 
