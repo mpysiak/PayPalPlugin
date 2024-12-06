@@ -29,10 +29,9 @@
         <service id="sylius_paypal.form.extension.payment_method" class="Sylius\PayPalPlugin\Form\Extension\PaymentMethodTypeExtension">
             <tag name="form.type_extension" />
         </service>
-        <service id="sylius_paypal.form.extension.payment_method" alias="Sylius\PayPalPlugin\Form\Extension\PaymentMethodTypeExtension" />
 
         <service id="sylius_paypal.form.type.paypal_configuration" class="Sylius\PayPalPlugin\Form\Type\PayPalConfigurationType">
-            <tag name="sylius.gateway_configuration_type" type="sylius.pay_pal" label="sylius.pay_pal.label" />
+            <tag name="sylius.gateway_configuration_type" type="sylius.pay_pal" label="sylius_paypal.label" />
         </service>
 
         <service

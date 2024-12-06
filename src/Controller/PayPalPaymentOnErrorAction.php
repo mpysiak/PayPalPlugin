@@ -36,7 +36,7 @@ final readonly class PayPalPaymentOnErrorAction
 
         $this->logger->error($content);
         FlashBagProvider::getFlashBag($this->flashBagOrRequestStack)
-            ->add('error', 'sylius.pay_pal.something_went_wrong')
+            ->add('error', 'sylius_paypal.something_went_wrong')
         ;
 
         return new Response();

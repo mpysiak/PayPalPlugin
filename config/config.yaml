@@ -30,7 +30,7 @@ sylius_grid:
                         type: enable_seller
                     download_report:
                         type: download_report
-                        label: sylius.pay_pal.report
+                        label: sylius_paypal.report
                         icon: tabler:download
                         options:
                             link:

@@ -45,7 +45,7 @@ final readonly class CancelPayPalOrderAction
         $order = $payment->getOrder();
         $this->orderRepository->remove($order);
 
-        FlashBagProvider::getFlashBag($this->flashBagOrRequestStack)->add('success', 'sylius.pay_pal.order_cancelled');
+        FlashBagProvider::getFlashBag($this->flashBagOrRequestStack)->add('success', 'sylius_paypal.order_cancelled');
 
         return new Response('', Response::HTTP_NO_CONTENT);
     }

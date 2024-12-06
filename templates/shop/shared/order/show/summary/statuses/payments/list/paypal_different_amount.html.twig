@@ -2,6 +2,6 @@
 
 {% if payment.amount != payment.order.total and payment.state == 'processing' %}
     <div>
-        <i>{{ 'sylius.pay_pal.different_amount'|trans }}</i>
+        <i>{{ 'sylius_paypal.different_amount'|trans }}</i>
     </div>
 {% endif %}

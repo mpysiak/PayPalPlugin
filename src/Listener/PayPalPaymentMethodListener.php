@@ -49,7 +49,7 @@ final readonly class PayPalPaymentMethodListener
 
         if ($this->isTherePayPalPaymentMethod()) {
             FlashBagProvider::getFlashBag($this->flashBagOrRequestStack)
-                ->add('error', 'sylius.pay_pal.more_than_one_seller_not_allowed')
+                ->add('error', 'sylius_paypal.more_than_one_seller_not_allowed')
             ;
 
             $event->setResponse(new RedirectResponse($this->urlGenerator->generate('sylius_admin_payment_method_index')));

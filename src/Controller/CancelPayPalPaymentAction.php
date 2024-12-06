@@ -55,7 +55,7 @@ final readonly class CancelPayPalPaymentAction
         $this->objectManager->flush();
 
         FlashBagProvider::getFlashBag($this->flashBagOrRequestStack)
-            ->add('success', 'sylius.pay_pal.payment_cancelled')
+            ->add('success', 'sylius_paypal.payment_cancelled')
         ;
 
         return new Response('', Response::HTTP_NO_CONTENT);
