@@ -66,7 +66,7 @@
         </service>
         <service id="sylius_paypal.controller.complete_paypal_order" alias="Sylius\PayPalPlugin\Controller\CompletePayPalOrderAction" />
 
-        <service id="Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromPaymentPageAction" public="true">
+        <service id="Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromPaymentPageAction">
             <argument type="service" id="sylius_abstraction.state_machine" />
             <argument>null</argument>
             <argument type="service" id="sylius_paypal.manager.payment_state" />
@@ -75,13 +75,13 @@
         </service>
         <service id="sylius_paypal.controller.create_paypal_order_from_payment_page" alias="Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromPaymentPageAction" />
 
-        <service id="Sylius\PayPalPlugin\Controller\DownloadPayoutsReportAction" public="true">
+        <service id="Sylius\PayPalPlugin\Controller\DownloadPayoutsReportAction">
             <argument type="service" id="sylius_paypal.downloader.report" />
             <argument type="service" id="sylius.repository.payment_method" />
         </service>
         <service id="sylius_paypal.controller.download_payouts_report" alias="Sylius\PayPalPlugin\Controller\DownloadPayoutsReportAction" />
 
-        <service id="Sylius\PayPalPlugin\Controller\EnableSellerAction" public="true">
+        <service id="Sylius\PayPalPlugin\Controller\EnableSellerAction">
             <argument type="service" id="sylius.repository.payment_method" />
             <argument type="service" id="sylius_paypal.enabler.payment_method" />
         </service>
@@ -153,7 +153,7 @@
         </service>
         <service id="sylius_paypal.controller.update_paypal_order" alias="Sylius\PayPalPlugin\Controller\UpdatePayPalOrderAction" />
 
-        <service id="Sylius\PayPalPlugin\Controller\CompletePayPalOrderFromPaymentPageAction" public="true">
+        <service id="Sylius\PayPalPlugin\Controller\CompletePayPalOrderFromPaymentPageAction">
             <argument type="service" id="sylius_paypal.manager.payment_state" />
             <argument type="service" id="router" />
             <argument type="service" id="sylius_paypal.provider.order" />
