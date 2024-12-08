@@ -14,7 +14,7 @@ sylius_paypal:
     missing_billing_address_content: 'Ga alstublief terug naar de "adressering" en vul deze aan.'
     missing_billing_address_header: 'We konden geen facturatie adres ophalen van PayPal'
     pay_with_card: 'Betalen met kaart'
-    pay_with_pay_pal: 'Betalen met PayPal'
+    pay_with_paypal: 'Betalen met PayPal'
     report: 'Rapporteren'
     sftp_password: 'SFTP wachtwoord'
     sftp_username: 'SFTP gebruikersnaam'
