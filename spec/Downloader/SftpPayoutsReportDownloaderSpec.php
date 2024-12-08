@@ -33,7 +33,7 @@ final class SftpPayoutsReportDownloaderSpec extends ObjectBehavior
         $this->shouldImplement(PayoutsReportDownloaderInterface::class);
     }
 
-    function it_returns_content_of_the_latest_pyt_report_from_pay_pal_sftp_server(
+    function it_returns_content_of_the_latest_pyt_report_from_paypal_sftp_server(
         SFTP $sftp,
         PaymentMethodInterface $paymentMethod,
         GatewayConfigInterface $gatewayConfig,

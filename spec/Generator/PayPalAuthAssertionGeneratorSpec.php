@@ -20,7 +20,7 @@ use Sylius\PayPalPlugin\Generator\PayPalAuthAssertionGeneratorInterface;
 
 final class PayPalAuthAssertionGeneratorSpec extends ObjectBehavior
 {
-    function it_implements_pay_pal_auth_assertion_generator_interface(): void
+    function it_implements_paypal_auth_assertion_generator_interface(): void
     {
         $this->shouldImplement(PayPalAuthAssertionGeneratorInterface::class);
     }

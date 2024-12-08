@@ -75,7 +75,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $this->shouldThrow(\InvalidArgumentException::class)->during('initializeCreate', [$event]);
     }
 
-    function it_redirects_with_error_if_the_pay_pal_payment_method_already_exists(
+    function it_redirects_with_error_if_the_paypal_payment_method_already_exists(
         PayPalPaymentMethodProviderInterface $payPalPaymentMethodProvider,
         OnboardingInitiatorInterface $onboardingInitiator,
         UrlGeneratorInterface $urlGenerator,
@@ -124,7 +124,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $this->initializeCreate($event);
     }
 
-    function it_does_nothing_if_payment_method_is_not_pay_pal(
+    function it_does_nothing_if_payment_method_is_not_paypal(
         ResourceControllerEvent $event,
         PaymentMethodInterface $paymentMethod,
         GatewayConfigInterface $gatewayConfig,

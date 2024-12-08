@@ -104,7 +104,7 @@ final class ResolveNextRouteActionSpec extends ObjectBehavior
         $this->supports($request)->shouldReturn(true);
     }
 
-    function it_does_not_support_payment_with_other_factory_name_than_pay_pal(
+    function it_does_not_support_payment_with_other_factory_name_than_paypal(
         ResolveNextRoute $request,
         PaymentInterface $payment,
         PaymentMethodInterface $paymentMethod,

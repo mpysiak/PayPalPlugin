@@ -27,7 +27,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $this->beConstructedWith($paymentMethodRepository);
     }
 
-    function it_implements_pay_pal_configuration_provider_interface(): void
+    function it_implements_paypal_configuration_provider_interface(): void
     {
         $this->shouldImplement(PayPalConfigurationProviderInterface::class);
     }
@@ -80,7 +80,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         $this->getPartnerAttributionId($channel)->shouldReturn('123123');
     }
 
-    function it_throws_an_exception_if_there_is_no_pay_pal_payment_method_defined(
+    function it_throws_an_exception_if_there_is_no_paypal_payment_method_defined(
         PaymentMethodRepositoryInterface $paymentMethodRepository,
         PaymentMethodInterface $otherPaymentMethod,
         GatewayConfigInterface $otherGatewayConfig,
@@ -101,7 +101,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         ;
     }
 
-    function it_throws_an_exception_if_there_is_no_client_id_on_pay_pal_payment_method(
+    function it_throws_an_exception_if_there_is_no_client_id_on_paypal_payment_method(
         PaymentMethodRepositoryInterface $paymentMethodRepository,
         PaymentMethodInterface $payPalPaymentMethod,
         PaymentMethodInterface $otherPaymentMethod,
@@ -128,7 +128,7 @@ final class PayPalConfigurationProviderSpec extends ObjectBehavior
         ;
     }
 
-    function it_throws_an_exception_if_there_is_no_partner_attribution_id_on_pay_pal_payment_method(
+    function it_throws_an_exception_if_there_is_no_partner_attribution_id_on_paypal_payment_method(
         PaymentMethodRepositoryInterface $paymentMethodRepository,
         PaymentMethodInterface $payPalPaymentMethod,
         PaymentMethodInterface $otherPaymentMethod,

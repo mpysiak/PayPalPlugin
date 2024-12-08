@@ -51,7 +51,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
         $this->shouldImplement(PaymentRefundProcessorInterface::class);
     }
 
-    function it_fully_refunds_payment_in_pay_pal(
+    function it_fully_refunds_payment_in_paypal(
         CacheAuthorizeClientApiInterface $authorizeClientApi,
         OrderDetailsApiInterface $orderDetailsApi,
         RefundPaymentApiInterface $refundOrderApi,
@@ -88,7 +88,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
         $this->refund($payment);
     }
 
-    function it_does_nothing_if_payment_is_not_pay_pal(
+    function it_does_nothing_if_payment_is_not_paypal(
         RefundPaymentApiInterface $refundOrderApi,
         PaymentInterface $payment,
         PaymentMethodInterface $paymentMethod,
@@ -104,7 +104,7 @@ final class PayPalPaymentRefundProcessorSpec extends ObjectBehavior
         $this->refund($payment);
     }
 
-    function it_does_nothing_if_payment_is_payment_has_not_pay_pal_order_id(
+    function it_does_nothing_if_payment_is_payment_has_not_paypal_order_id(
         RefundPaymentApiInterface $refundOrderApi,
         PaymentInterface $payment,
         PaymentMethodInterface $paymentMethod,

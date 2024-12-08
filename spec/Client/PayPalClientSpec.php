@@ -65,7 +65,7 @@ final class PayPalClientSpec extends ObjectBehavior
         );
     }
 
-    function it_implements_pay_pal_client_interface(): void
+    function it_implements_paypal_client_interface(): void
     {
         $this->shouldImplement(PayPalClientInterface::class);
     }

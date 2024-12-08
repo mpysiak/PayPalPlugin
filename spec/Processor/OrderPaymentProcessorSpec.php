@@ -35,7 +35,7 @@ final class OrderPaymentProcessorSpec extends ObjectBehavior
         $this->shouldImplement(OrderProcessorInterface::class);
     }
 
-    function it_does_nothing_if_there_is_a_pay_pal_processing_captured_payment(
+    function it_does_nothing_if_there_is_a_paypal_processing_captured_payment(
         OrderProcessorInterface $baseOrderProcessor,
         OrderInterface $order,
         PaymentInterface $payment,
@@ -83,7 +83,7 @@ final class OrderPaymentProcessorSpec extends ObjectBehavior
         $this->process($order);
     }
 
-    function it_cancels_payment_and_processes_order_if_the_processing_payment_has_method_change_to_non_pay_pal(
+    function it_cancels_payment_and_processes_order_if_the_processing_payment_has_method_change_to_non_paypal(
         OrderProcessorInterface $baseOrderProcessor,
         StateMachineInterface $stateMachine,
         OrderInterface $order,
