@@ -12,7 +12,7 @@
     # config/routes/sylius_shop.yaml
 
     sylius_paypal_shop:
-        resource: "@SyliusPayPalPlugin/config/shop_routing.yaml"
+        resource: "@SyliusPayPalPlugin/config/shop_routes.yaml"
         prefix: /{_locale}
         requirements:
             _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
@@ -20,13 +20,13 @@
     # config/routes/sylius_admin.yaml
 
     sylius_paypal_admin:
-        resource: "@SyliusPayPalPlugin/config/admin_routing.yml"
+        resource: "@SyliusPayPalPlugin/config/admin_routes.yaml"
         prefix: '/%sylius_admin.path_name%'
 
     # config/routes.yaml
 
     sylius_paypal_webhook:
-        resource: "@SyliusPayPalPlugin/config/webhook_routing.yaml"
+        resource: "@SyliusPayPalPlugin/config/webhook_routes.yaml"
     ```
 
 1. Import configuration

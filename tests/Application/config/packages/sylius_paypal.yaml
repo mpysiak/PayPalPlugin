@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@SyliusPayPalPlugin/config/config.yaml" }
+
 fos_rest:
     exception: true
     view:

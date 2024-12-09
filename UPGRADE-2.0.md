@@ -26,24 +26,30 @@
    +   - { resource: '@SyliusPayPalPlugin/config/config.yaml' }
    ```
 
-   And the routes configuration paths:
+   The routes have been consolidated into a single `config/routes.yaml` file. It is sufficient to import this file instead of defining each route explicitly:
+   ```yaml
+       sylius_paypal:
+           resource: "@SyliusPayPalPlugin/config/routes.yaml"
+   ```
+
+   However, if you have customized the routes, you need to adjust the paths to reflect the new structure:
    ```diff
+   sylius_paypal_admin:
+   -   resource: "@SyliusPayPalPlugin/Resources/config/admin_routing.yaml"
+   -   prefix: /admin
+   +   resource: "@SyliusPayPalPlugin/config/routes/admin.yaml"
+   +   prefix: '/%sylius_admin.path_name%'
+
    sylius_paypal_shop:
    -   resource: "@SyliusPayPalPlugin/Resources/config/shop_routing.yaml"
-   +   resource: "@SyliusPayPalPlugin/config/shop_routing.yaml"
+   +   resource: "@SyliusPayPalPlugin/config/routes/shop.yaml"
        prefix: /{_locale}
        requirements:
            _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 
-   sylius_paypal_admin:
-   -   resource: "@SyliusPayPalPlugin/Resources/config/admin_routing.yaml"
-   -   prefix: /admin
-   +   resource: "@SyliusPayPalPlugin/config/admin_routing.yaml"
-   +   prefix: '/%sylius_admin.path_name%'
-
    sylius_paypal_webhook:
    -   resource: "@SyliusPayPalPlugin/Resources/config/webhook_routing.yaml"
-   +   resource: "@SyliusPayPalPlugin/config/webhook_routing.yaml"
+   +   resource: "@SyliusPayPalPlugin/config/routes/webhook.yaml"
    ```
 
    And the paths to assets and templates if you are using them.
