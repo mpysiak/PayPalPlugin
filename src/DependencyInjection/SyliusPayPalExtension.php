@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 final class SyliusPayPalExtension extends Extension implements PrependExtensionInterface
 {
-    public const PAYPAL_FACTORY_NAME = 'sylius.pay_pal';
+    public const PAYPAL_FACTORY_NAME = 'sylius_paypal';
 
     public function getAlias(): string
     {
@@ -41,22 +41,18 @@ final class SyliusPayPalExtension extends Extension implements PrependExtensionI
         ]);
         $delegatingLoader = new DelegatingLoader($loaderResolver);
 
-        $container->setParameter('sylius.paypal.logging.increased', (bool) $config['logging']['increased']);
-        $container->setParameter('sylius_paypal.logging.increased', $container->getParameter('sylius.paypal.logging.increased'));
+        $container->setParameter('sylius_paypal.logging.increased', (bool) $config['logging']['increased']);
+        $container->setParameter('sylius_paypal.prioritized_factory_name', self::PAYPAL_FACTORY_NAME);
 
         if ($config['sandbox']) {
-            $container->setParameter('sylius.pay_pal.facilitator_url', 'https://paypal.sylius.com');
-            $container->setParameter('sylius.pay_pal.api_base_url', 'https://api.sandbox.paypal.com/');
-            $container->setParameter('sylius.pay_pal.reports_sftp_host', 'reports.sandbox.paypal.com');
+            $container->setParameter('sylius_paypal.facilitator_url', 'https://paypal.sylius.com');
+            $container->setParameter('sylius_paypal.api_base_url', 'https://api.sandbox.paypal.com/');
+            $container->setParameter('sylius_paypal.reports_sftp_host', 'reports.sandbox.paypal.com');
         } else {
-            $container->setParameter('sylius.pay_pal.facilitator_url', 'https://prod.paypal.sylius.com');
-            $container->setParameter('sylius.pay_pal.api_base_url', 'https://api.paypal.com/');
-            $container->setParameter('sylius.pay_pal.reports_sftp_host', 'reports.paypal.com');
+            $container->setParameter('sylius_paypal.facilitator_url', 'https://prod.paypal.sylius.com');
+            $container->setParameter('sylius_paypal.api_base_url', 'https://api.paypal.com/');
+            $container->setParameter('sylius_paypal.reports_sftp_host', 'reports.paypal.com');
         }
-
-        $container->setParameter('sylius_paypal.facilitator_url', $container->getParameter('sylius.pay_pal.facilitator_url'));
-        $container->setParameter('sylius_paypal.api_base_url', $container->getParameter('sylius.pay_pal.api_base_url'));
-        $container->setParameter('sylius_paypal.reports_sftp_host', $container->getParameter('sylius.pay_pal.reports_sftp_host'));
 
         $delegatingLoader->load('services.xml');
     }

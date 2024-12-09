@@ -20,18 +20,13 @@
         <import resource="services/**/*.xml" />
     </imports>
 
-    <parameters>
-        <parameter key="sylius.paypal.prioritized_factory_name">sylius.pay_pal</parameter>
-        <parameter key="sylius_paypal.prioritized_factory_name">%sylius.paypal.prioritized_factory_name%</parameter>
-    </parameters>
-
     <services>
         <service id="sylius_paypal.form.extension.payment_method" class="Sylius\PayPalPlugin\Form\Extension\PaymentMethodTypeExtension">
             <tag name="form.type_extension" />
         </service>
 
         <service id="sylius_paypal.form.type.paypal_configuration" class="Sylius\PayPalPlugin\Form\Type\PayPalConfigurationType">
-            <tag name="sylius.gateway_configuration_type" type="sylius.pay_pal" label="sylius_paypal.label" />
+            <tag name="sylius.gateway_configuration_type" type="sylius_paypal" label="sylius_paypal.label" />
         </service>
 
         <service

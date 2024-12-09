@@ -8,7 +8,9 @@
 
 1. The configuration root node has been changed from `sylius_pay_pal` to `sylius_paypal`.
 
-1. The translations' prefix has been changed from `sylius.pay_pal` to `sylius_paypal`.
+1. The factory name has been changed from `sylius.pay_pal` to `sylius_paypal`.
+
+1. The translations' prefix has been changed from `sylius.pay_pal` to `sylius_paypal`. Additionally, all occurrences of `pay_pal` have been replaced with `paypal`.
 
 1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
 
@@ -45,6 +47,12 @@
    ```
 
    And the paths to assets and templates if you are using them.
+
+1. The following callbacks of WinzouStateMachine have been renamed:
+   - `complete_pay_pal_order` -> `complete_paypal_order`
+   - `refund_pay_pal_order` -> `refund_paypal_order`
+
+1. The Twig function `sylius_is_pay_pal_enabled` has been renamed to `sylius_is_paypal_enabled`.
 
 1. **No need to overwrite templates**:  
    Thanks to the use of Twig Hooks and the refactoring of templates, you no longer need to overwrite templates to use plugin features.
@@ -146,6 +154,19 @@
    | `Sylius\PayPalPlugin\Registrar\SellerWebhookRegistrarInterface`         | `sylius_paypal.registrar.seller_webhook`            |
    | `Sylius\PayPalPlugin\Resolver\CapturePaymentResolverInterface`          | `sylius_paypal.resolver.capture_payment`            |
    | `Sylius\PayPalPlugin\Updater\PaymentUpdaterInterface`                   | `sylius_paypal.updater.payment`                     |
+
+1. The following parameters have been renamed:
+
+   | Old parameter                            | New parameter                            | 
+   |------------------------------------------|------------------------------------------|
+   | `sylius.paypal.prioritized_factory_name` | `sylius_paypal.prioritized_factory_name` |
+   | `sylius.pay_pal.request_trials_limit`    | `sylius_paypal.request_trials_limit`     |
+   | `sylius.paypal.logging.increased`        | `sylius_paypal.logging.increased`        |
+   | `sylius.pay_pal.facilitator_url`         | `sylius_paypal.facilitator_url`          |
+   | `sylius.pay_pal.api_base_url`            | `sylius_paypal.api_base_url`             |
+   | `sylius.pay_pal.reports_sftp_host`       | `sylius_paypal.reports_sftp_host`        |
+
+1. The parameter `sylius.paypal.logging_level_increased` has been removed.
 
 1. The following constructor signatures have been changed:
 

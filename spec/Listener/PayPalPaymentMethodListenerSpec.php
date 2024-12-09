@@ -52,7 +52,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
     ): void {
         $event->getSubject()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $payPalPaymentMethodProvider->provide()->willThrow(PayPalPaymentMethodNotFoundException::class);
 
         $onboardingInitiator->supports($paymentMethod)->willReturn(true);
@@ -75,7 +75,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $this->shouldThrow(\InvalidArgumentException::class)->during('initializeCreate', [$event]);
     }
 
-    function it_redirects_with_error_if_the_pay_pal_payment_method_already_exists(
+    function it_redirects_with_error_if_the_paypal_payment_method_already_exists(
         PayPalPaymentMethodProviderInterface $payPalPaymentMethodProvider,
         OnboardingInitiatorInterface $onboardingInitiator,
         UrlGeneratorInterface $urlGenerator,
@@ -89,7 +89,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $event->getSubject()->willReturn($paymentMethod);
         $payPalPaymentMethodProvider->provide()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $flashBag->add('error', 'sylius_paypal.more_than_one_seller_not_allowed')->shouldBeCalled();
         $session->getBag('flashes')->willReturn($flashBag);
@@ -114,7 +114,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
     ): void {
         $event->getSubject()->willReturn($paymentMethod);
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
         $payPalPaymentMethodProvider->provide()->willThrow(PayPalPaymentMethodNotFoundException::class);
 
         $onboardingInitiator->supports($paymentMethod)->willReturn(false);
@@ -124,7 +124,7 @@ final class PayPalPaymentMethodListenerSpec extends ObjectBehavior
         $this->initializeCreate($event);
     }
 
-    function it_does_nothing_if_payment_method_is_not_pay_pal(
+    function it_does_nothing_if_payment_method_is_not_paypal(
         ResourceControllerEvent $event,
         PaymentMethodInterface $paymentMethod,
         GatewayConfigInterface $gatewayConfig,

@@ -5,7 +5,7 @@ sylius_twig_hooks:
                 template: '@SyliusPayPalPlugin/admin/payment_method/form/header/paypal_logo.html.twig'
                 priority: -100
 
-        'sylius_admin.payment_method.update.content.form.sections.gateway_configuration.sylius.pay_pal':
+        'sylius_admin.payment_method.update.content.form.sections.gateway_configuration.sylius_paypal':
             client_id:
                 template: '@SyliusPayPalPlugin/admin/payment_method/form/section/gateway_configuration/client_id.html.twig'
                 priority: -100

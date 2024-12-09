@@ -35,7 +35,7 @@ final class PayPalPaymentSpec extends ObjectBehavior
     ): void {
         $paymentMethod->getGatewayConfig()->willReturn($gatewayConfig);
 
-        $gatewayConfig->getFactoryName()->willReturn('sylius.pay_pal');
+        $gatewayConfig->getFactoryName()->willReturn('sylius_paypal');
 
         $this->supports($paymentMethod)->shouldReturn(true);
     }

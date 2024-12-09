@@ -4,7 +4,7 @@
     {% endblock %}
     {% block footer %}
         {% import '@SyliusAdmin/shared/helper/button.html.twig' as button %}
-        {% set path = path('sylius_admin_payment_method_create', {'factory': 'sylius.pay_pal'}) %}
+        {% set path = path('sylius_admin_payment_method_create', {'factory': constant('Sylius\\PayPalPlugin\\DependencyInjection\\SyliusPayPalExtension::PAYPAL_FACTORY_NAME')}) %}
 
         {{ button.default({ text: 'sylius.ui.no_label'|trans, attr: 'data-bs-dismiss=modal' }) }}
         <a class="btn btn-outline-success" href="{{ path }}">

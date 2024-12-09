@@ -19,6 +19,7 @@ use Sylius\Behat\Exception\NotificationExpectationMismatchException;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\Admin\PaymentMethod\CreatePageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
+use Sylius\PayPalPlugin\DependencyInjection\SyliusPayPalExtension;
 use Tests\Sylius\PayPalPlugin\Behat\Element\DownloadPayPalReportElementInterface;
 use Webmozart\Assert\Assert;
 
@@ -52,7 +53,7 @@ final readonly class ManagingPaymentMethodsContext implements Context
      */
     public function iTryToCreateANewPaymentMethodWithGatewayFactory(): void
     {
-        $this->createPage->tryToOpen(['factory' => 'sylius.pay_pal']);
+        $this->createPage->tryToOpen(['factory' => SyliusPayPalExtension::PAYPAL_FACTORY_NAME]);
     }
 
     /**

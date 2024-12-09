@@ -1,4 +1,4 @@
-{% if not sylius_is_pay_pal_enabled(grid.data.currentPageResults) %}
+{% if not sylius_is_paypal_enabled(grid.data.currentPageResults) %}
     <button class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#confirmation-modal-create-pay-pal">
         {{ ux_icon('tabler:brand-paypal-filled') }}
         {{ 'sylius_paypal.enable_paypal'|trans }}
