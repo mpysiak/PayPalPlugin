@@ -23,10 +23,10 @@
 
 1. Import routes:
 
-    ````yaml
-   sylius_refund:
-       resource: "@SyliusPayPalPlugin/config/routes.yaml"
-    ````
+    ```yaml
+    sylius_refund:
+        resource: "@SyliusPayPalPlugin/config/routes.yaml"
+    ```
 
 1. Add `FOS\RestBundle` configuration to your `config/packages/fos_rest.yaml` file
 
