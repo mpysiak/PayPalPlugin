@@ -6,54 +6,7 @@
     composer require sylius/paypal-plugin
     ```
 
-1. Import routes
-
-    ```yaml
-    # config/routes/sylius_shop.yaml
-
-    sylius_paypal_shop:
-        resource: "@SyliusPayPalPlugin/config/shop_routing.yaml"
-        prefix: /{_locale}
-        requirements:
-            _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
-
-    # config/routes/sylius_admin.yaml
-
-    sylius_paypal_admin:
-        resource: "@SyliusPayPalPlugin/config/admin_routing.yml"
-        prefix: '/%sylius_admin.path_name%'
-
-    # config/routes.yaml
-
-    sylius_paypal_webhook:
-        resource: "@SyliusPayPalPlugin/config/webhook_routing.yaml"
-    ```
-
-1. Import configuration
-
-   ```yaml
-   # config/packages/_sylius.yaml
-
-   imports:
-       # ...
-       - { resource: "@SyliusPayPalPlugin/config/config.yaml" }
-   ```
-
-1. Add `FOS\RestBundle` configuration to your `config/packages/fos_rest.yaml` file
-
-    ```yaml
-     fos_rest:
-        exception: true
-        view:
-            formats:
-                json: true
-                xml:  true
-            empty_content: 204
-        format_listener:
-            rules:
-                - { path: '^/api/.*', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
-                - { path: '^/', stop: true }
-   ```
+   > Remember to allow community recipes with `composer config extra.symfony.allow-contrib true` or during plugin installation process
 
 1. Apply migrations
 
@@ -61,9 +14,19 @@
    bin/console doctrine:migrations:migrate -n
    ```
 
+1. Clear cache:
+
+    ```bash
+    bin/console cache:clear
+    ```
+
 #### BEWARE!
 
-To make PayPal integration working, your local Sylius URL should be accessible for the PayPal servers. Therefore you can
+This installation instruction assumes that you're using Symfony Flex. If you don't, take a look at the
+[legacy installation instruction](legacy_installation.md). However, we strongly encourage you to use
+Symfony Flex.
+
+To make PayPal integration working, your local Sylius URL should be accessible for the PayPal servers. Therefore, you can
 add the proper directive to your `/etc/hosts` (something like `127.0.0.1 sylius.local`) or use a service as [ngrok](https://ngrok.com/).
 
 ---

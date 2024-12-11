@@ -3,7 +3,6 @@ imports:
     - { resource: "@SyliusPayumBundle/Resources/config/app/config.yaml" }
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
-    - { resource: "@SyliusPayPalPlugin/config/config.yaml" }
     - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
 
 parameters:
