@@ -7,10 +7,10 @@
     let completeUrl = "{{ completeUrl }}";
     let createPayPalOrderFromProductUrl = "{{ path('sylius_shop_live_component', {_live_component: 'sylius_shop:product:add_to_cart_form', _live_action: 'addToCart'}) }}"
     let processPayPalOrderUrl = "{{ processPayPalOrderUrl }}";
-    let cancelPayPalOrderUrl = "{{ path('sylius_paypal_plugin_cancel_order') }}";
+    let cancelPayPalOrderUrl = "{{ path('sylius_paypal_shop_cancel_order') }}";
     let errorPayPalPaymentUrl = "{{ errorPayPalPaymentUrl }}";
     let availableCountries = {{ available_countries|json_encode|raw }};
-    let updatePayPalOrderUrl = "{{ path('sylius_paypal_plugin_update_paypal_order') }}";
+    let updatePayPalOrderUrl = "{{ path('sylius_paypal_shop_update_paypal_order') }}";
 
     paypal.Buttons({
         locale: '{{ locale }}',
@@ -22,7 +22,7 @@
             const componentProps = JSON.parse(componentElement.dataset.livePropsValue);
             const requestData = JSON.stringify({
                 props: componentProps,
-                args: {routeName: 'sylius_paypal_plugin_create_paypal_order_from_cart', idRouteParameter: 'id', addFlashMessage: false}
+                args: {routeName: 'sylius_paypal_shop_create_paypal_order_from_cart', idRouteParameter: 'id', addFlashMessage: false}
             });
 
             return fetch(createPayPalOrderFromProductUrl, {

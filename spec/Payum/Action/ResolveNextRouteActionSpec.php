@@ -41,7 +41,7 @@ final class ResolveNextRouteActionSpec extends ObjectBehavior
         $payment->getOrder()->willReturn($order);
         $order->getTokenValue()->willReturn('123!@#asd');
 
-        $request->setRouteName('sylius_paypal_plugin_pay_with_paypal_form')->shouldBeCalled();
+        $request->setRouteName('sylius_paypal_shop_pay_with_paypal_form')->shouldBeCalled();
         $request->setRouteParameters(['orderToken' => '123!@#asd', 'paymentId' => 12])->shouldBeCalled();
 
         $this->execute($request);

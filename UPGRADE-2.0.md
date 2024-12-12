@@ -12,8 +12,6 @@
 
 1. The translations' prefix has been changed from `sylius.pay_pal` to `sylius_paypal`. Additionally, all occurrences of `pay_pal` have been replaced with `paypal`.
 
-1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
-
 1. The directories structure has been updated to the current Symfony recommendations:
    - `@SyliusPayPalPlugin/Resources/config` -> `@SyliusPayPalPlugin/config`
    - `@SyliusPayPalPlugin/Resources/translations` -> `@SyliusPayPalPlugin/translations`
@@ -53,6 +51,31 @@
    ```
 
    And the paths to assets and templates if you are using them.
+
+1. The following routes have been renamed:
+
+| Old route                                                      | New route                                                    |
+|----------------------------------------------------------------|--------------------------------------------------------------|
+| `sylius_paypal_plugin_admin_download_payouts_report`           | `sylius_paypal_admin_download_payouts_report`                |
+| `sylius_paypal_plugin_admin_enable_seller`                     | `sylius_paypal_admin_enable_seller`                          |
+| `sylius_paypal_plugin_pay_with_paypal_form`                    | `sylius_paypal_shop_pay_with_paypal_form`                    |
+| `sylius_paypal_plugin_create_paypal_order`                     | `sylius_paypal_shop_create_paypal_order`                     |
+| `sylius_paypal_plugin_create_paypal_order_from_cart`           | `sylius_paypal_shop_create_paypal_order_from_cart`           |
+| `sylius_paypal_plugin_complete_paypal_order`                   | `sylius_paypal_shop_complete_paypal_order`                   |
+| `sylius_paypal_plugin_process_paypal_order`                    | `sylius_paypal_shop_process_paypal_order`                    |
+| `sylius_paypal_plugin_update_paypal_order`                     | `sylius_paypal_shop_update_paypal_order`                     |
+| `sylius_paypal_plugin_create_paypal_order_from_payment_page`   | `sylius_paypal_shop_create_paypal_order_from_payment_page`   |
+| `sylius_paypal_plugin_complete_paypal_order_from_payment_page` | `sylius_paypal_shop_complete_paypal_order_from_payment_page` |
+| `sylius_paypal_plugin_cancel_order`                            | `sylius_paypal_shop_cancel_order`                            |
+| `sylius_paypal_plugin_cancel_payment`                          | `sylius_paypal_shop_cancel_payment`                          |
+| `sylius_paypal_plugin_cancel_last_payment`                     | `sylius_paypal_shop_cancel_last_payment`                     |
+| `sylius_paypal_plugin_cancel_checkout_payment`                 | `sylius_paypal_shop_cancel_checkout_payment`                 |
+| `sylius_paypal_plugin_payment_error`                           | `sylius_paypal_shop_payment_error`                           |
+| `sylius_paypal_plugin_webhook_refund_order`                    | `sylius_paypal_webhook_refund_order`                         |
+
+1. The route `sylius_paypal_plugin_create_paypal_order_from_product` has been removed and replaced with the `AddToCartFormComponent`.
+
+1. The route `sylius_paypal_plugin_complete_paypal_payment` has been removed because the associated controller does not exist.
 
 1. The following callbacks of WinzouStateMachine have been renamed:
    - `complete_pay_pal_order` -> `complete_paypal_order`

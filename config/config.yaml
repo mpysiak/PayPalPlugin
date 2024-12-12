@@ -34,7 +34,7 @@ sylius_grid:
                         icon: tabler:download
                         options:
                             link:
-                                route: sylius_paypal_plugin_admin_download_payouts_report
+                                route: sylius_paypal_admin_download_payouts_report
                                 parameters:
                                     id: resource.id
                 main:

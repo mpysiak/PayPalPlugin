@@ -50,9 +50,9 @@ final readonly class PayPalButtonsController
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'completeUrl' => $this->router->generate('sylius_shop_checkout_complete'),
-                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_payment_error'),
+                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_shop_payment_error'),
                 'locale' => $this->localeProcessor->process($this->localeContext->getLocaleCode()),
-                'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_plugin_process_paypal_order'),
+                'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_shop_process_paypal_order'),
             ]));
         } catch (\InvalidArgumentException $exception) {
             return new Response('');
@@ -72,13 +72,13 @@ final readonly class PayPalButtonsController
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'completeUrl' => $this->router->generate('sylius_shop_checkout_complete'),
-                'createPayPalOrderFromCartUrl' => $this->router->generate('sylius_paypal_plugin_create_paypal_order_from_cart', ['id' => $orderId]),
+                'createPayPalOrderFromCartUrl' => $this->router->generate('sylius_paypal_shop_create_paypal_order_from_cart', ['id' => $orderId]),
                 'currency' => $order->getCurrencyCode(),
-                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_payment_error'),
+                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_shop_payment_error'),
                 'locale' => $this->localeProcessor->process((string) $order->getLocaleCode()),
                 'orderId' => $orderId,
                 'partnerAttributionId' => $this->payPalConfigurationProvider->getPartnerAttributionId($channel),
-                'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_plugin_process_paypal_order'),
+                'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_shop_process_paypal_order'),
             ]));
         } catch (\InvalidArgumentException $exception) {
             return new Response('');
@@ -96,12 +96,12 @@ final readonly class PayPalButtonsController
         try {
             return new Response($this->twig->render('@SyliusPayPalPlugin/pay_from_payment_page.html.twig', [
                 'available_countries' => $this->availableCountriesProvider->provide(),
-                'cancelPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_cancel_payment'),
+                'cancelPayPalPaymentUrl' => $this->router->generate('sylius_paypal_shop_cancel_payment'),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'currency' => $order->getCurrencyCode(),
-                'completePayPalOrderFromPaymentPageUrl' => $this->router->generate('sylius_paypal_plugin_complete_paypal_order_from_payment_page', ['id' => $orderId]),
-                'createPayPalOrderFromPaymentPageUrl' => $this->router->generate('sylius_paypal_plugin_create_paypal_order_from_payment_page', ['id' => $orderId]),
-                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_plugin_payment_error'),
+                'completePayPalOrderFromPaymentPageUrl' => $this->router->generate('sylius_paypal_shop_complete_paypal_order_from_payment_page', ['id' => $orderId]),
+                'createPayPalOrderFromPaymentPageUrl' => $this->router->generate('sylius_paypal_shop_create_paypal_order_from_payment_page', ['id' => $orderId]),
+                'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_shop_payment_error'),
                 'locale' => $this->localeProcessor->process((string) $order->getLocaleCode()),
                 'orderId' => $orderId,
                 'partnerAttributionId' => $this->payPalConfigurationProvider->getPartnerAttributionId($channel),
