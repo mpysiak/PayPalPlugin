@@ -6,7 +6,7 @@
     let cancelPayPalPaymentUrl = "{{ cancelPayPalPaymentUrl }}";
     let errorPayPalPaymentUrl = "{{ errorPayPalPaymentUrl }}";
     let availableCountries = {{ available_countries|json_encode|raw }};
-    let updatePayPalOrderUrl = "{{ path('sylius_paypal_plugin_update_paypal_order') }}";
+    let updatePayPalOrderUrl = "{{ path('sylius_paypal_shop_update_paypal_order') }}";
 
     paypal.Buttons({
         style: {

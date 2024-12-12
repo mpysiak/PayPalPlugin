@@ -49,7 +49,7 @@ final class SellerWebhookRegistrarSpec extends ObjectBehavior
 
         $authorizeClientApi->authorize('CLIENT_ID', 'CLIENT_SECRET')->willReturn('TOKEN');
         $urlGenerator
-            ->generate('sylius_paypal_plugin_webhook_refund_order', [], UrlGeneratorInterface::ABSOLUTE_URL)
+            ->generate('sylius_paypal_webhook_refund_order', [], UrlGeneratorInterface::ABSOLUTE_URL)
             ->willReturn('https://webhook-url.com')
         ;
 
@@ -70,7 +70,7 @@ final class SellerWebhookRegistrarSpec extends ObjectBehavior
 
         $authorizeClientApi->authorize('CLIENT_ID', 'CLIENT_SECRET')->willReturn('TOKEN');
         $urlGenerator
-            ->generate('sylius_paypal_plugin_webhook_refund_order', [], UrlGeneratorInterface::ABSOLUTE_URL)
+            ->generate('sylius_paypal_webhook_refund_order', [], UrlGeneratorInterface::ABSOLUTE_URL)
             ->willReturn('https://webhook-url.com')
         ;
 
