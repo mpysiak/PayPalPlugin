@@ -14,7 +14,7 @@
     ];
     ```
 
-3. Import configuration:
+1. Import configuration:
 
     ```yaml
     imports:
@@ -26,7 +26,7 @@
     ```yaml
     # config/routes/sylius_shop.yaml
 
-    sylius_paypal:
+    sylius_paypal_shop:
         resource: "@SyliusPayPalPlugin/Resources/config/shop_routing.yaml"
         prefix: /{_locale}
         requirements:
@@ -44,7 +44,7 @@
         resource: "@SyliusPayPalPlugin/Resources/config/webhook_routing.yaml"
     ```
 
-3. Override Sylius' templates
+1. Override Sylius' templates
 
     ```bash
     cp -R vendor/sylius/paypal-plugin/src/Resources/views/bundles/* templates/bundles/
