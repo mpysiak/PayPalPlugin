@@ -50,6 +50,7 @@ final readonly class PayPalButtonsController
                 'available_countries' => $this->availableCountriesProvider->provide(),
                 'clientId' => $this->payPalConfigurationProvider->getClientId($channel),
                 'completeUrl' => $this->router->generate('sylius_shop_checkout_complete'),
+                'createPayPalOrderFromProductUrl' => $this->router->generate('sylius_paypal_shop_add_to_cart', ['productId' => $request->attributes->getInt('productId')]),
                 'errorPayPalPaymentUrl' => $this->router->generate('sylius_paypal_shop_payment_error'),
                 'locale' => $this->localeProcessor->process($this->localeContext->getLocaleCode()),
                 'processPayPalOrderUrl' => $this->router->generate('sylius_paypal_shop_process_paypal_order'),
