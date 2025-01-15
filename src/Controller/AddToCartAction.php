@@ -71,7 +71,7 @@ final readonly class AddToCartAction
             $product = $orderItem->getVariant()->getProduct();
 
             return new RedirectResponse(
-                $this->router->generate('sylius_shop_product_show', ['slug' => $product->getSlug()])
+                $this->router->generate('sylius_shop_product_show', ['slug' => $product->getSlug()]),
             );
         }
 
