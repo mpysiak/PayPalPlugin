@@ -18,8 +18,8 @@ use Sylius\Bundle\OrderBundle\Controller\AddToCartCommandInterface;
 use Sylius\Bundle\OrderBundle\Factory\AddToCartCommandFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\NewResourceFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
+use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
-use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
 use Sylius\Component\Order\Modifier\OrderModifierInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -68,7 +68,11 @@ final readonly class AddToCartAction
         $form = $form->handleRequest($request);
 
         if ($form->isSubmitted() && !$form->isValid()) {
-            return new RedirectResponse((string) $request->headers->get('referer'));
+            $product = $orderItem->getVariant()->getProduct();
+
+            return new RedirectResponse(
+                $this->router->generate('sylius_shop_product_show', ['slug' => $product->getSlug()])
+            );
         }
 
         /** @var AddToCartCommandInterface $addToCartCommand */
