@@ -75,3 +75,17 @@ sylius_paypal_shop_payment_error:
     methods: [POST]
     defaults:
         _controller: sylius_paypal.controller.paypal_payment_on_error
+
+sylius_paypal_shop_add_to_cart:
+    path: /paypal-add-to-cart/{productId}
+    methods: [POST]
+    defaults:
+        _controller: sylius_paypal.controller.add_to_cart
+        _sylius:
+            factory:
+                method: createForProduct
+                arguments: [ expr:notFoundOnNull(service('sylius.repository.product').find($productId)) ]
+            form:
+                type: Sylius\Bundle\CoreBundle\Form\Type\Order\AddToCartType
+                options:
+                    product: expr:notFoundOnNull(service('sylius.repository.product').find($productId))
