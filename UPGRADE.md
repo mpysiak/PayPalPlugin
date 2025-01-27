@@ -16,6 +16,9 @@
 
 1. The definition of `Http\Discovery\Psr18Client` has been deprecated and will be removed in Sylius/PayPalPlugin 2.0. Use `sylius.http_client` service instead.
 
+1. The routes `sylius_shop_checkout_select_payment` and `sylius_shop_order_show` have been moved to the `sylius_shop_override_routing.yaml` file because they override 
+   routes from SyliusShop. These routes are also imported in the `shop_routing.yaml` file, so no action is required unless you have overridden them yourself.
+
 1. Aliases for the following services have been introduced to standardize service IDs and will replace the incorrect IDs
    in PayPalPlugin 2.0. The old service IDs are now deprecated and will be removed in PayPalPlugin 2.0.
    Please update your service definitions accordingly to ensure compatibility with next major version of PayPalPlugin.
